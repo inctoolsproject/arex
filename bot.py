@@ -144,7 +144,6 @@ def NOTIFIED_ADD_CONTACT(op):
         print ("\n\nNOTIFIED_ADD_CONTACT\n\n")
         return
 
-tracer.addOpInterrupt(5,NOTIFIED_ADD_CONTACT)
 
 def NOTIFIED_ACCEPT_GROUP_INVITATION(op):
     #print op
@@ -155,7 +154,6 @@ def NOTIFIED_ACCEPT_GROUP_INVITATION(op):
         print ("\n\nNOTIFIED_ACCEPT_GROUP_INVITATION\n\n")
         return
 
-tracer.addOpInterrupt(17,NOTIFIED_ACCEPT_GROUP_INVITATION)
 
 def NOTIFIED_KICKOUT_FROM_GROUP(op):
     try:
@@ -165,7 +163,6 @@ def NOTIFIED_KICKOUT_FROM_GROUP(op):
         print ("\n\nNOTIFIED_KICKOUT_FROM_GROUP\n\n")
         return
 
-tracer.addOpInterrupt(19,NOTIFIED_KICKOUT_FROM_GROUP)
 
 def NOTIFIED_LEAVE_GROUP(op):
     try:
@@ -175,7 +172,6 @@ def NOTIFIED_LEAVE_GROUP(op):
         print ("\n\nNOTIFIED_LEAVE_GROUP\n\n")
         return
 
-tracer.addOpInterrupt(15,NOTIFIED_LEAVE_GROUP)
 
 def NOTIFIED_READ_MESSAGE(op):
     #print op
