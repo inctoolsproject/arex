@@ -24,7 +24,7 @@ class LINE:
   def __init__(self):
     self.Talk = Talk()
     self._session = requests.session()
-    self._headers = {'X-Line-Application': 'DESKTOPMAC 10.10.2-YOSEMITE-x64 MAC 4.5.0', 'X-Line-Access': 'ElXUxr5uRURyjl2fGlUb.FxBsBNXOMA+JnecZ7pvCsW.b4SXa5GfFHgbXgUwjOwWpth4axtLEUGP9vjvmgWFJKk=', 'User-Agent': 'Line/6.0.0 iPad4,1 9.0.2'}
+    self._headers = {'X-Line-Application': 'DESKTOPMAC 10.10.2-YOSEMITE-x64 MAC 4.5.0', 'X-Line-Access': 'EmBDgrBFhXJpY7dQzZu8.bfmfUwtccO+1N7EuVwD+Ma.oabpihLvt98qEpaxEnGT4qSW74hTzicNwJckxwLcpE8=', 'User-Agent': 'Line/6.0.0 iPad4,1 9.0.2'}
 
   def login(self, mail=None, passwd=None, cert=None, token=None, qr=False, callback=None):
     if callback is None:
@@ -421,7 +421,7 @@ class LINE:
 
       prof = self.getProfile()
 
-      print("Suscess Masuk")
+      print("Kever - Bot")
       print("Mid 		: " + prof.mid)
       print("Name 		: " + prof.displayName)
       print("AuthToken 	: " + self.authToken)
