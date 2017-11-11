@@ -230,8 +230,8 @@ def bot(op):
                     if wait["autoJoin"] == True:
                         cl.acceptGroupInvitation(op.param1)
                         print "Bot 1 Join"
-                        cl.sendText(op.param1,'Hallo Generasi, Hormat 􀜁􀅹Salute􏿿')
-                        cl.sendText(op.param1,'Daftar Command? Ketik /help')
+                        cl.sendText(op.param1,'􀜁􀅹Salute􏿿')
+                        cl.sendText(op.param1,'gimana kabarnya?')
                     else:
                         print "Error"
                 if Amid in op.param3:
@@ -283,9 +283,6 @@ def bot(op):
                     ki.updateGroup(G)
                     Ti = ki.reissueGroupTicket(op.param1)
                     cl.acceptGroupInvitationByTicket(op.param1,Ti)
-                    ki.acceptGroupInvitationByTicket(op.param1,Ti)
-                    kk.acceptGroupInvitationByTicket(op.param1,Ti)
-                    kc.acceptGroupInvitationByTicket(op.param1,Ti)
                     X = cl.getGroup(op.param1)
                     X.preventJoinByTicket = True
                     cl.updateGroup(X)
@@ -319,8 +316,6 @@ def bot(op):
                     X.preventJoinByTicket = False
                     cl.updateGroup(X)
                     Ti = kk.reissueGroupTicket(op.param1)
-                    cl.acceptGroupInvitationByTicket(op.param1,Ti)
-                    ki.acceptGroupInvitationByTicket(op.param1,Ti)
                     kk.acceptGroupInvitationByTicket(op.param1,Ti)
                     G = ki.getGroup(op.param1)
                     G.preventJoinByTicket = True
@@ -354,9 +349,6 @@ def bot(op):
                     X.preventJoinByTicket = False
                     kc.updateGroup(X)
                     Ti = kc.reissueGroupTicket(op.param1)
-                    cl.acceptGroupInvitationByTicket(op.param1,Ti)
-                    ki.acceptGroupInvitationByTicket(op.param1,Ti)
-                    kk.acceptGroupInvitationByTicket(op.param1,Ti)
                     kc.acceptGroupInvitationByTicket(op.param1,Ti)
                     G = kk.getGroup(op.param1)
                     G.preventJoinByTicket = True
@@ -1493,6 +1485,28 @@ def bot(op):
                 ki.sendText(msg.to,"hadir bos")
                 kk.sendText(msg.to,"akuu hadir")
                 kc.sendText(msg.to,"Come Back")
+#----------------------------------------------------------------------------
+#------------------------------ Kick All --------------------------------
+                if msg.text == "Mulai":
+                    print "ok"
+                    _name = msg.text.replace("Mulai","")
+                    gs = client.getGroup(msg.to)
+                    sendMessage(msg.to,"Tangkis")
+                    targets = []
+                    for g in gs.members:
+                        if _name in g.displayName:
+                            targets.append(g.mid)
+                    if targets == []:
+                        sendMessage(msg.to,"error")
+                    else:
+                        for target in targets:
+                            try:
+                                klist=[client]
+                                kicker=random.choice(klist)
+                                kicker.kickoutFromGroup(msg.to,[target])
+                                print (msg.to,[g.mid])
+                            except:
+                                sendText(msg.to,"error")
 #----------------------------------------------------------------------------
 #------------------------------ RESPON SPEED --------------------------------
             elif msg.text.lower() in ["respon"]:
