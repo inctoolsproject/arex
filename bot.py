@@ -188,7 +188,6 @@ def NOTIFIED_READ_MESSAGE(op):
     except:
         pass
 
-tracer.addOpInterrupt(55, NOTIFIED_READ_MESSAGE)
 
 def RECEIVE_MESSAGE(op):
     msg = op.message
