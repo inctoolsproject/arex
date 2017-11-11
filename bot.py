@@ -110,9 +110,9 @@ wait = {
     "dblacklist":False,
     "protectionOn":False,
     "protect":False,
-    "cancelprotect":True,
+    "cancelprotect":False,
     "inviteprotect":False,
-    "linkprotect":True,
+    "linkprotect":False,
     }
 
 wait2 = {
@@ -124,91 +124,6 @@ wait2 = {
 
 setTime = {}
 setTime = wait2['setTime']
-
-def sendMessage(to, text, contentMetadata={}, contentType=0):
-    mes = Message()
-    mes.to, mes.from_ = to, profile.mid
-    mes.text = text
-
-    mes.contentType, mes.contentMetadata = contentType, contentMetadata
-    if to not in messageReq:
-        messageReq[to] = -1
-    messageReq[to] += 1
-    client._client.sendMessage(messageReq[to], mes)
-
-def NOTIFIED_ADD_CONTACT(op):
-    try:
-        sendMessage(op.param1, client.getContact(op.param1).displayName + "Thanks for add")
-    except Exception as e:
-        print e
-        print ("\n\nNOTIFIED_ADD_CONTACT\n\n")
-        return
-
-
-def NOTIFIED_ACCEPT_GROUP_INVITATION(op):
-    #print op
-    try:
-        sendMessage(op.param1, client.getContact(op.param2).displayName + "WELCOME to " + group.name)
-    except Exception as e:
-        print e
-        print ("\n\nNOTIFIED_ACCEPT_GROUP_INVITATION\n\n")
-        return
-
-
-def NOTIFIED_KICKOUT_FROM_GROUP(op):
-    try:
-        sendMessage(op.param1, client.getContact(op.param3).displayName + " Yahh Di Kick\n(*´･ω･*)")
-    except Exception as e:
-        print e
-        print ("\n\nNOTIFIED_KICKOUT_FROM_GROUP\n\n")
-        return
-
-
-def NOTIFIED_LEAVE_GROUP(op):
-    try:
-        sendMessage(op.param1, client.getContact(op.param2).displayName + " Yahh Dia Keluar\n(*´･ω･*)")
-    except Exception as e:
-        print e
-        print ("\n\nNOTIFIED_LEAVE_GROUP\n\n")
-        return
-
-
-def NOTIFIED_READ_MESSAGE(op):
-    #print op
-    try:
-        if op.param1 in wait['readPoint']:
-            Name = client.getContact(op.param2).displayName
-            if Name in wait['readMember'][op.param1]:
-                pass
-            else:
-                wait['readMember'][op.param1] += "\n・" + Name
-                wait['ROM'][op.param1][op.param2] = "・" + Name
-        else:
-            pass
-    except:
-        pass
-
-
-def RECEIVE_MESSAGE(op):
-    msg = op.message
-    try:
-        if msg.contentType == 0:
-            try:
-                if msg.to in wait['readPoint']:
-                    if msg.from_ in wait["ROM"][msg.to]:
-                        del wait["ROM"][msg.to][msg.from_]
-                else:
-                    pass
-            except:
-                pass
-        else:
-            pass
-    except KeyboardInterrupt:
-	       sys.exit(0)
-    except Exception as error:
-        print error
-        print ("\n\nRECEIVE_MESSAGE\n\n")
-        return
 
 def mention(to, nama):
     aa = ""
@@ -315,8 +230,8 @@ def bot(op):
                     if wait["autoJoin"] == True:
                         cl.acceptGroupInvitation(op.param1)
                         print "Bot 1 Join"
-                        cl.sendText(op.param1,'􀜁􀅹Salute􏿿')
-                        cl.sendText(op.param1,'gimana kabarnya?')
+                        cl.sendText(op.param1,'Wkwkwk')
+                        cl.sendText(op.param1,'Maaf Gua Ketawa 􀜁􀅹Salute􏿿')
                     else:
                         print "Error"
                 if Amid in op.param3:
@@ -368,6 +283,9 @@ def bot(op):
                     ki.updateGroup(G)
                     Ti = ki.reissueGroupTicket(op.param1)
                     cl.acceptGroupInvitationByTicket(op.param1,Ti)
+                    ki.acceptGroupInvitationByTicket(op.param1,Ti)
+                    kk.acceptGroupInvitationByTicket(op.param1,Ti)
+                    kc.acceptGroupInvitationByTicket(op.param1,Ti)
                     X = cl.getGroup(op.param1)
                     X.preventJoinByTicket = True
                     cl.updateGroup(X)
@@ -401,6 +319,8 @@ def bot(op):
                     X.preventJoinByTicket = False
                     cl.updateGroup(X)
                     Ti = kk.reissueGroupTicket(op.param1)
+                    cl.acceptGroupInvitationByTicket(op.param1,Ti)
+                    ki.acceptGroupInvitationByTicket(op.param1,Ti)
                     kk.acceptGroupInvitationByTicket(op.param1,Ti)
                     G = ki.getGroup(op.param1)
                     G.preventJoinByTicket = True
@@ -434,6 +354,9 @@ def bot(op):
                     X.preventJoinByTicket = False
                     kc.updateGroup(X)
                     Ti = kc.reissueGroupTicket(op.param1)
+                    cl.acceptGroupInvitationByTicket(op.param1,Ti)
+                    ki.acceptGroupInvitationByTicket(op.param1,Ti)
+                    kk.acceptGroupInvitationByTicket(op.param1,Ti)
                     kc.acceptGroupInvitationByTicket(op.param1,Ti)
                     G = kk.getGroup(op.param1)
                     G.preventJoinByTicket = True
@@ -1566,32 +1489,10 @@ def bot(op):
 #----------------------------------------------------------------------------
 #--------------------------------- ABSEN ------------------------------------
             elif msg.text.lower() in ["absen"]:
-                cl.sendText(msg.to,"aku disini")
-                ki.sendText(msg.to,"hadir bos")
-                kk.sendText(msg.to,"akuu hadir")
+                cl.sendText(msg.to,"ada apa")
+                ki.sendText(msg.to,"gua hadir nih")
+                kk.sendText(msg.to,"kenapa, gua hadir")
                 kc.sendText(msg.to,"Come Back")
-#----------------------------------------------------------------------------
-#------------------------------ Kick All --------------------------------
-                if msg.text == "Mulai":
-                    print "ok"
-                    _name = msg.text.replace("Mulai","")
-                    gs = client.getGroup(msg.to)
-                    sendMessage(msg.to,"Tangkis")
-                    targets = []
-                    for g in gs.members:
-                        if _name in g.displayName:
-                            targets.append(g.mid)
-                    if targets == []:
-                        sendMessage(msg.to,"error")
-                    else:
-                        for target in targets:
-                            try:
-                                klist=[client]
-                                kicker=random.choice(klist)
-                                kicker.kickoutFromGroup(msg.to,[target])
-                                print (msg.to,[g.mid])
-                            except:
-                                sendText(msg.to,"error")
 #----------------------------------------------------------------------------
 #------------------------------ RESPON SPEED --------------------------------
             elif msg.text.lower() in ["respon"]:
