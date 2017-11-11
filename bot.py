@@ -1489,10 +1489,10 @@ def bot(op):
 #----------------------------------------------------------------------------
 #--------------------------------- ABSEN ------------------------------------
             elif msg.text.lower() in ["absen"]:
-                cl.sendText(msg.to,"Hadir Bosku ????Salute??")
-                ki.sendText(msg.to,"Hadir  ????Salute??")
-                kk.sendText(msg.to,"Selalu Hadir ????Salute??")
-                kc.sendText(msg.to,"Come Back ????Salute??")
+                cl.sendText(msg.to,"aku disini")
+                ki.sendText(msg.to,"hadir bos")
+                kk.sendText(msg.to,"akuu hadir")
+                kc.sendText(msg.to,"Come Back")
 #----------------------------------------------------------------------------
 #------------------------------ RESPON SPEED --------------------------------
             elif msg.text.lower() in ["respon"]:
