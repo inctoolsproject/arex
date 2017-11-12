@@ -8,9 +8,6 @@ from bs4 import BeautifulSoup
 from threading import Thread
 from pyowm import OWM
 
-cl = LINETCR.LINE()
-cl.login(token="EmBDgrBFhXJpY7dQzZu8.bfmfUwtccO+1N7EuVwD+Ma.oabpihLvt98qEpaxEnGT4qSW74hTzicNwJckxwLcpE8=")
-cl.loginResult()
 
 cl = LINETCR.LINE()
 cl.login(qr=True)
