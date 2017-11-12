@@ -257,9 +257,9 @@ def bot(op):
                         print "Error"
 
         if op.type == 19:
-                    if op.param3 in Bots:
-                        random.choice(KAC).kickoutFromGroup(op.param1,[op.param2])
-                        random.choice(KAC).inviteIntoGroup(op.param1,[Bots])
+                    if op.param3 in admin:
+                    random.choice(KAC).kickoutFromGroup(op.param1,[op.param2])
+                    cl.inviteIntoGroup(op.param1,admin)
 
         if op.type == 19:
                 if dmid in op.param3:
@@ -336,11 +336,13 @@ def bot(op):
                     if op.param2 in Bots:
                         pass
                     try:
-                        kc.kickoutFromGroup(op.param1,[op.param2])
+                        cl.kickoutFromGroup(op.param1,[op.param2])
                         kk.kickoutFromGroup(op.param1,[op.param2])
+                        kc.kickoutFromGroup(op.param1,[op.param2])
                     except:
                         try:
                             random.choice(KAC).kickoutFromGroup(op.param1,[op.param2])
+                            random.choice(KAC).inviteIntoGroup(op.param1,[op.param3])
                         except:
                             print ("client?????or????????????\n["+op.param1+"]\n?\n["+op.param2+"]\n??????????????\n??????????????")
                         if op.param2 in wait["blacklist"]:
@@ -378,6 +380,7 @@ def bot(op):
                     except:
                         try:
                             random.choice(KAC).kickoutFromGroup(op.param1,[op.param2])
+                            random.choice(KAC).inviteIntoGroup(op.param1,[op.param3])
                         except:
                             print ("client?????or????????????\n["+op.param1+"]\n?\n["+op.param2+"]\n??????????????\n??????????????")
                         if op.param2 in wait["blacklist"]:
@@ -420,7 +423,7 @@ def bot(op):
                     if len(G.members) <= wait["autoCancel"]["members"]:
                         cl.rejectGroupInvitation(op.param1)
             else:
-                Inviter = op.param3.replace("",',')
+                Inviter = op.param3.replace("",',')
                 InviterX = Inviter.split(",")
                 matched_list = []
                 for tag in wait["blacklist"]:
