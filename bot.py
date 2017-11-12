@@ -10,19 +10,19 @@ from pyowm import OWM
 
 
 cl = LINETCR.LINE()
-cl.login(qr=True)
+cl.login(token="EmZHqp7hjy5I4IystK33.b151yOadpUwvZ3Q/9r80aW.SiEMeDIMGorcgMQMH8JfCDN15dD5GW8fFN6kRK6874I=")
 cl.loginResult()
 
-ki = LINETCR.LINE()
-ki.login(qr=True)
-ki.loginResult()
-
 kk = LINETCR.LINE()
-kk.login(qr=True)
+kk.login(token="EmmPd1bHx3vlT5pk8wAd.UvZQ8iaX1kDhGbAShThZ3q.MZrbKS4rPXcHgH8OexPzSAtUZ32MPr+A/EUNmTp1dGk=")
 kk.loginResult()
 
+ki = LINETCR.LINE()
+ki.login(token="EmmyB9nhQtGgZKKihQtb.VHH0q0Dhr8pSns5/+RsmgW.CpDnl+0XggJXIZB3v+8LiDQMoLhGNmG8L9WrRjsRL8U=")
+ki.loginResult()
+
 kc = LINETCR.LINE()
-kc.login(qr=True)
+kc.login(token="EmJHJsDwCvQswOGh1jW8.bfmfUwtccO+1N7EuVwD+Ma.tCei5rmH1IadgptJM+9ELtHyXuMG6spGx/l4nv/GD88=")
 kc.loginResult()
 
 print "Login success"
