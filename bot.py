@@ -87,7 +87,7 @@ dmid = cl.getProfile().mid
 Amid = ki.getProfile().mid
 Bmid = kk.getProfile().mid
 Cmid = kc.getProfile().mid
-Bots = [dmid,Amid,Bmid,Cmid]
+Bots = [dmid,Amid,Bmid,Cmid,"ube187443474747c3ec352e7efeb48c1b","ub95ceaf08031d4a7478016ac1ed1f3dd"]
 admin = ["ube187443474747c3ec352e7efeb48c1b","ub95ceaf08031d4a7478016ac1ed1f3dd","ud18caee2faa4cf85c1dbfc37589ce7d1"]
 staff = ["ube187443474747c3ec352e7efeb48c1b","ub95ceaf08031d4a7478016ac1ed1f3dd","ub95ceaf08031d4a7478016ac1ed1f3dd"]
 adminMID = "ube187443474747c3ec352e7efeb48c1b","ub95ceaf08031d4a7478016ac1ed1f3dd"
@@ -110,6 +110,7 @@ wait = {
     "wblacklist":False,
     "dblacklist":False,
     "protectionOn":False,
+    "atjointicket":True,
     "protect":False,
     "cancelprotect":True,
     "inviteprotect":False,
