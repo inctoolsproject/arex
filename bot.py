@@ -109,11 +109,10 @@ wait = {
     "wblacklist":False,
     "dblacklist":False,
     "protectionOn":False,
-    "atjointicket":True,
     "protect":False,
-    "cancelprotect":False,
+    "cancelprotect":True,
     "inviteprotect":False,
-    "linkprotect":False,
+    "linkprotect":True,
     }
 
 wait2 = {
@@ -231,8 +230,8 @@ def bot(op):
                     if wait["autoJoin"] == True:
                         cl.acceptGroupInvitation(op.param1)
                         print "Bot 1 Join"
-                        cl.sendText(op.param1,'Wkwkwk')
-                        cl.sendText(op.param1,'Maaf Gua Ketawa 􀜁􀅹Salute􏿿')
+                        cl.sendText(op.param1,'Hallo Generasi, Hormat 􀜁􀅹Salute􏿿')
+                        cl.sendText(op.param1,'Daftar Command? Ketik /help')
                     else:
                         print "Error"
                 if Amid in op.param3:
@@ -258,8 +257,9 @@ def bot(op):
                         print "Error"
 
         if op.type == 19:
-                    if op.param3 in admin:
-                    cl.inviteIntoGroup(op.param1,admin)
+                    if op.param3 in Bots:
+                        random.choice(KAC).kickoutFromGroup(op.param1,[op.param2])
+                        random.choice(KAC).inviteIntoGroup(op.param1,[Bots])
 
         if op.type == 19:
                 if dmid in op.param3:
@@ -336,13 +336,11 @@ def bot(op):
                     if op.param2 in Bots:
                         pass
                     try:
-                        cl.kickoutFromGroup(op.param1,[op.param2])
-                        kk.kickoutFromGroup(op.param1,[op.param2])
                         kc.kickoutFromGroup(op.param1,[op.param2])
+                        kk.kickoutFromGroup(op.param1,[op.param2])
                     except:
                         try:
                             random.choice(KAC).kickoutFromGroup(op.param1,[op.param2])
-                            random.choice(KAC).inviteIntoGroup(op.param1,[op.param3])
                         except:
                             print ("client?????or????????????\n["+op.param1+"]\n?\n["+op.param2+"]\n??????????????\n??????????????")
                         if op.param2 in wait["blacklist"]:
@@ -380,7 +378,6 @@ def bot(op):
                     except:
                         try:
                             random.choice(KAC).kickoutFromGroup(op.param1,[op.param2])
-                            random.choice(KAC).inviteIntoGroup(op.param1,[op.param3])
                         except:
                             print ("client?????or????????????\n["+op.param1+"]\n?\n["+op.param2+"]\n??????????????\n??????????????")
                         if op.param2 in wait["blacklist"]:
@@ -423,7 +420,7 @@ def bot(op):
                     if len(G.members) <= wait["autoCancel"]["members"]:
                         cl.rejectGroupInvitation(op.param1)
             else:
-                Inviter = op.param3.replace("",',')
+                Inviter = op.param3.replace("",',')
                 InviterX = Inviter.split(",")
                 matched_list = []
                 for tag in wait["blacklist"]:
@@ -1492,9 +1489,9 @@ def bot(op):
 #----------------------------------------------------------------------------
 #--------------------------------- ABSEN ------------------------------------
             elif msg.text.lower() in ["absen"]:
-                cl.sendText(msg.to,"ada apa")
-                ki.sendText(msg.to,"gua hadir nih")
-                kk.sendText(msg.to,"kenapa, gua hadir")
+                cl.sendText(msg.to,"aku disini")
+                ki.sendText(msg.to,"hadir bos")
+                kk.sendText(msg.to,"akuu hadir")
                 kc.sendText(msg.to,"Come Back")
 #----------------------------------------------------------------------------
 #------------------------------ RESPON SPEED --------------------------------
