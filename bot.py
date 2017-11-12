@@ -15,15 +15,15 @@ cl.loginResult()
 
 ki = LINETCR.LINE()
 ki.login(qr=True)
-cl.loginResult()
+ki.loginResult()
 
 kk = LINETCR.LINE()
 kk.login(qr=True)
-cl.loginResult()
+kk.loginResult()
 
 kc = LINETCR.LINE()
 kc.login(qr=True)
-cl.loginResult()
+kc.loginResult()
 
 print "Login success"
 reload(sys)
