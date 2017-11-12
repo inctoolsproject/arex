@@ -11,15 +11,19 @@ from pyowm import OWM
 
 cl = LINETCR.LINE()
 cl.login(qr=True)
+cl.loginResult()
 
 ki = LINETCR.LINE()
 ki.login(qr=True)
+cl.loginResult()
 
 kk = LINETCR.LINE()
 kk.login(qr=True)
+cl.loginResult()
 
 kc = LINETCR.LINE()
 kc.login(qr=True)
+cl.loginResult()
 
 print "Login success"
 reload(sys)
