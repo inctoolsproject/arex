@@ -259,7 +259,6 @@ def bot(op):
 
         if op.type == 19:
                     if op.param3 in admin:
-                    random.choice(KAC).kickoutFromGroup(op.param1,[op.param2])
                     cl.inviteIntoGroup(op.param1,admin)
 
         if op.type == 19:
