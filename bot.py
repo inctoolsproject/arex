@@ -70,9 +70,9 @@ helpMessage =""" 􀜁􀅹Salute􏿿 Salam Manis Generasi 􀜁􀅹Salute􏿿
 
 
 ✯ Private Command ✯
-↠ Set group = Khusus Admin Command
+↠ Set group = Khusus Admin Command"""
 
-Setgroup ="""  􀜁􀅹Salute􏿿 Admin Command Menu 􀜁􀅹Salute􏿿
+Setgroup =""" 􀜁􀅹Salute􏿿 Admin Command Menu 􀜁􀅹Salute􏿿
 
         ✯ Command Admin ✯
 ╔ ↠[Set View] = Melihat proteksi bot
