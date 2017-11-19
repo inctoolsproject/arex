@@ -1429,13 +1429,14 @@ def bot(op):
     #-------------Apa Aja Lah---------------#
 
     #-------------Apa Aja Lah1---------------#
-            elif "My(Cn)" in msg.txt:
-                if msg.from_ in admsa:
-                string = msg.txt replace(My(Cn):","")
-                if len(string.decode('utf-8')) <= 20;
-                       profile = cl.getProfile()
-                       profile.displayName = string
-                       cl.sendText(Msg.to,"Change name to " + string + " Suscess!"
+            elif "/cn " in msg.text:
+                if msg.from_ in admin:
+                    string = msg.text.replace("/cn ","")
+                    if len(string.decode('utf-8')) <= 5000:
+                        profile = cl.getProfile()
+                        profile.displayName = string
+                        cl.updateProfile(profile)
+                        cl.sendText(msg.to,"Done")
     #-------------Apa Aja Lah1---------------#
     
     #-------------Fungsi Tag All Start---------------#
