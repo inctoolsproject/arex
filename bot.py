@@ -1426,7 +1426,21 @@ def bot(op):
                     string = msg.text.replace("gantiCn ","")
                     if len(string.decode('utf-8')) <= 5000:
                         profile = cl.getProfile()
+                        profile = kk.getProfile()
+                        profile = ki.getProfile()
+                        profile = kc.getProfile()
+                        profile = ks.getProfile()
+                        profile = ka.getProfile()
+                        profile = kb.getProfile()
+                        profile = kb.getProfile()
                         profile.displayName = string
+                        cl.updateProfile(profile)
+                        kk.updateProfile(profile)
+                        ki.updateProfile(profile)
+                        kc.updateProfile(profile)
+                        ks.updateProfile(profile)
+                        ka.updateProfile(profile)
+                        ko.updateProfile(profile)
                         cl.updateProfile(profile)
                         cl.sendText(msg.to,"Done")
 #----------------------------------------------------------------------------
@@ -1436,7 +1450,21 @@ def bot(op):
                     string = msg.text.replace("gantiBio ","")
                     if len(string.decode('utf-8')) <= 500:
                         profile = cl.getProfile()
+                        profile = kk.getProfile()
+                        profile = ki.getProfile()
+                        profile = kc.getProfile()
+                        profile = ks.getProfile()
+                        profile = ka.getProfile()
+                        profile = kb.getProfile()
+                        profile = kb.getProfile()
                         profile.statusMessage = string
+                        cl.updateProfile(profile)
+                        kk.updateProfile(profile)
+                        ki.updateProfile(profile)
+                        kc.updateProfile(profile)
+                        ks.updateProfile(profile)
+                        ka.updateProfile(profile)
+                        ko.updateProfile(profile)
                         cl.updateProfile(profile)
                         cl.sendText(msg.to,"Done")
 #----------------------------------------------------------------------------    
@@ -1682,7 +1710,7 @@ def bot(op):
                 cl.sendText(msg.to,md)
 #----------------------------------------------------------------------------    
 #----------------------------- TAG ALL MEMBER -------------------------------
-            if msg.text.lower() in ["semuamember"]:
+            if msg.text.lower() in ["tagall"]:
                 group = cl.getGroup(msg.to)
                 nama = [contact.mid for contact in group.members]
                 nm1, nm2, nm3, nm4, nm5, jml = [], [], [], [], [], len(nama)
