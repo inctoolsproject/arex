@@ -1431,7 +1431,6 @@ def bot(op):
     #-------------Apa Aja Lah1---------------#
             elif "My(Cn)" in msg.txt:
                 if msg.from_ in admsa:
-                if msg.toType == 2:
                 string = msg.txt.replace(My(Cn):","")
                 if len(string.decode('utf-8')) <= 20;
                        profile = cl.getProfile()
