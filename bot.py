@@ -1927,56 +1927,6 @@ def bot(op):
                 except:
                     cl.sendText(msg.to,'Error.')
 #----------------------------------------------------------------------------
-             elif "a" in msg.text:
-                  cl.sendText(msg.to, "Hahaha")
-             elif "b" in msg.text:
-                  cl.sendText(msg.to, "Hahaha")
-             elif "c" in msg.text:
-                  cl.sendText(msg.to, "Hahaha")
-             elif "d" in msg.text:
-                  cl.sendText(msg.to, "Hahaha")
-             elif "e" in msg.text:
-                  cl.sendText(msg.to, "Hahaha")   
-             elif "f" in msg.text:
-                  cl.sendText(msg.to, "Hahaha")   
-             elif "g" in msg.text:
-                  cl.sendText(msg.to, "Hahaha")   
-             elif "h" in msg.text:
-                  cl.sendText(msg.to, "Hahaha")   
-             elif "i" in msg.text:
-                  cl.sendText(msg.to, "Hahaha")   
-             elif "j" in msg.text:
-                  cl.sendText(msg.to, "Hahaha")   
-             elif "k" in msg.text:
-                  cl.sendText(msg.to, "Hahaha")   
-             elif "l" in msg.text:
-                  cl.sendText(msg.to, "Hahaha")   
-             elif "m" in msg.text:
-                  cl.sendText(msg.to, "Hahaha")   
-             elif "n" in msg.text:
-                  cl.sendText(msg.to, "Hahaha")   
-             elif "o" in msg.text:
-                  cl.sendText(msg.to, "Hahaha")   
-             elif "p" in msg.text:
-                  cl.sendText(msg.to, "Hahaha")   
-             elif "q" in msg.text:
-                  cl.sendText(msg.to, "Hahaha")   
-             elif "r" in msg.text:
-                  cl.sendText(msg.to, "Hahaha")
-             elif "s" in msg.text:
-                  cl.sendText(msg.to, "Hahaha")   
-             elif "t" in msg.text:
-                  cl.sendText(msg.to, "Hahaha")   
-             elif "u" in msg.text:
-                  cl.sendText(msg.to, "Hahaha")   
-             elif "w" in msg.text:
-                  cl.sendText(msg.to, "Hahaha")
-             elif "x" in msg.text:
-                  cl.sendText(msg.to, "Hahaha")   
-             elif "y" in msg.text:
-                  cl.sendText(msg.to, "Hahaha")   
-             elif "z" in msg.text:
-                  cl.sendText(msg.to, "Hahaha")
     #-------------Fungsi Tag All Start---------------#
             elif msg.text in ["kiwkiw","Tagall"]:
                   group = cl.getGroup(msg.to)
