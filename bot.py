@@ -1420,25 +1420,563 @@ def bot(op):
                     except:
                         pass
     #-------------Fungsi Leave Group Finish---------------#
-
-    #-------------Apa Aja Lah---------------#
-            elif "a-z" in msg.txt:
-             if msg.from_ in admsa:
-              if msg.toType == 2:
-                cl.sendText(msg.to,"Haha")
-    #-------------Apa Aja Lah---------------#
-
-    #-------------Apa Aja Lah1---------------#
-            elif "/cn " in msg.text:
+#------------------------------ CHANGE NAME ---------------------------------
+            elif "gantiCn " in msg.text:
                 if msg.from_ in admin:
-                    string = msg.text.replace("/cn ","")
+                    string = msg.text.replace("gantiCn ","")
                     if len(string.decode('utf-8')) <= 5000:
                         profile = cl.getProfile()
                         profile.displayName = string
                         cl.updateProfile(profile)
                         cl.sendText(msg.to,"Done")
-    #-------------Apa Aja Lah1---------------#
-    
+#----------------------------------------------------------------------------
+#------------------------------ CHANGE BIO ----------------------------------
+            elif "gantiBio " in msg.text:
+                if msg.from_ in admin:
+                    string = msg.text.replace("gantiBio ","")
+                    if len(string.decode('utf-8')) <= 500:
+                        profile = cl.getProfile()
+                        profile.statusMessage = string
+                        cl.updateProfile(profile)
+                        cl.sendText(msg.to,"Done")
+#----------------------------------------------------------------------------    
+
+#----------------------------------------------------------------------------                    
+            elif msg.text.lower() in ["contact on"]:
+                if msg.from_ in admin:
+                    if wait["contact"] == True:
+                        if wait["lang"] == "JP":
+                            cl.sendText(msg.to,"Contact ON")
+                        else:
+                            cl.sendText(msg.to,"Contact ON")
+                    else:
+                        wait["contact"] = True
+                        if wait["lang"] == "JP":
+                            cl.sendText(msg.to,"Contact ON")
+                        else:
+                            cl.sendText(msg.to,"Contact ON")
+
+            elif msg.text.lower() in ["contact off"]:
+                if msg.from_ in admin:
+                    if wait["contact"] == False:
+                        if wait["lang"] == "JP":
+                            cl.sendText(msg.to,"Contact OFF")
+                        else:
+                            cl.sendText(msg.to,"Contact OFF")
+                    else:
+                        wait["contact"] = False
+                        if wait["lang"] == "JP":
+                            cl.sendText(msg.to,"Contact OFF")
+                        else:
+                            cl.sendText(msg.to,"Contact OFF")
+
+            elif msg.text.lower() in ["join on"]:
+                if msg.from_ in admin:
+                    if wait["autoJoin"] == True:
+                        if wait["lang"] == "JP":
+                            cl.sendText(msg.to,"AutoJoin ON")
+                        else:
+                            cl.sendText(msg.to,"AutoJoin ON")
+                    else:
+                        wait["autoJoin"] = True
+                        if wait["lang"] == "JP":
+                            cl.sendText(msg.to,"AutoJoin ON")
+                        else:
+                            cl.sendText(msg.to,"AutoJoin ON")
+
+            elif msg.text.lower() in ["join off"]:
+                if msg.from_ in admin:
+                    if wait["autoJoin"] == False:
+                        if wait["lang"] == "JP":
+                            cl.sendText(msg.to,"AutoJoin OFF")
+                        else:
+                            cl.sendText(msg.to,"AutoJoin OFF")
+                    else:
+                        wait["autoJoin"] = False
+                        if wait["lang"] == "JP":
+                            cl.sendText(msg.to,"AutoJoin OFF")
+                        else:
+                            cl.sendText(msg.to,"AutoJoin OFF")
+
+            elif msg.text in ["Gcancel:"]:
+                if msg.from_ in admin:
+                    try:
+                        strnum = msg.text.replace("Gcancel:","")
+                        if strnum == "off":
+                            wait["autoCancel"]["on"] = False
+                            if wait["lang"] == "JP":
+                                cl.sendText(msg.to,"Invitation refused turned off\nTo turn on please specify the number of people and send")
+                            else:
+                                cl.sendText(msg.to,"å…³äº†é‚€è¯·æ‹’ç»ã€‚è¦æ—¶å¼€è¯·æŒ‡å®šäººæ•°å‘é€")
+                        else:
+                            num =  int(strnum)
+                            wait["autoCancel"]["on"] = True
+                            if wait["lang"] == "JP":
+                                cl.sendText(msg.to,strnum + "The group of people and below decided to automatically refuse invitation")
+                            else:
+                                cl.sendText(msg.to,strnum + "ä½¿äººä»¥ä¸‹çš„å°ç»„ç”¨è‡ªåŠ¨é‚€è¯·æ‹’ç»")
+                    except:
+                        if wait["lang"] == "JP":
+                            cl.sendText(msg.to,"Value is wrong")
+                        else:
+                            cl.sendText(msg.to,"Bizarre ratings")
+
+            elif msg.text.lower() in ["leave on"]:
+                if msg.from_ in admin:
+                    if wait["leaveRoom"] == True:
+                        if wait["lang"] == "JP":
+                            cl.sendText(msg.to,"Leave ON")
+                        else:
+                            cl.sendText(msg.to,"Leave ON")
+                    else:
+                        wait["leaveRoom"] = True
+                        if wait["lang"] == "JP":
+                            cl.sendText(msg.to,"Leave ON")
+                        else:
+                            cl.sendText(msg.to,"Leave ON")
+
+            elif msg.text.lower() in ["leave off"]:
+                if msg.from_ in admin:
+                    if wait["leaveRoom"] == False:
+                        if wait["lang"] == "JP":
+                            cl.sendText(msg.to,"Leave OFF")
+                        else:
+                            cl.sendText(msg.to,"Leave OFF")
+                    else:
+                        wait["leaveRoom"] = False
+                        if wait["lang"] == "JP":
+                            cl.sendText(msg.to,"Leave OFF")
+                        else:
+                            cl.sendText(msg.to,"Leave OFF")
+
+            elif msg.text.lower() in ["protect on"]:
+                if msg.from_ in admin:
+                    if wait["protect"] == True:
+                        if wait["lang"] == "JP":
+                            cl.sendText(msg.to,"Protection ON")
+                        else:
+                            cl.sendText(msg.to,"Protection ON")
+                    else:
+                        wait["protect"] = True
+                        if wait["lang"] == "JP":
+                            cl.sendText(msg.to,"Protection ON")
+                        else:
+                            cl.sendText(msg.to,"Protection ON")
+
+            elif msg.text.lower() in ["protect off"]:
+                if msg.from_ in admin:
+                    if wait["protect"] == False:
+                        if wait["lang"] == "JP":
+                            cl.sendText(msg.to,"Protection OFF")
+                        else:
+                            cl.sendText(msg.to,"Protection OFF")
+                    else:
+                        wait["protect"] = False
+                        if wait["lang"] == "JP":
+                            cl.sendText(msg.to,"Protection OFF")
+                        else:
+                            cl.sendText(msg.to,"Protection OFF")
+
+            elif msg.text.lower() in ["qr on"]:
+                if msg.from_ in admin:
+                    if wait["linkprotect"] == True:
+                        if wait["lang"] == "JP":
+                            cl.sendText(msg.to,"Protection Qr ON")
+                        else:
+                            cl.sendText(msg.to,"Protection Qr ON")
+                    else:
+                        wait["linkprotect"] = True
+                        if wait["lang"] == "JP":
+                            cl.sendText(msg.to,"Protection Qr ON")
+                        else:
+                            cl.sendText(msg.to,"Protection Qr ON")
+
+            elif msg.text.lower() in ["qr off"]:
+                if msg.from_ in admin:
+                    if wait["linkprotect"] == False:
+                        if wait["lang"] == "JP":
+                            cl.sendText(msg.to,"Protection Qr OFF")
+                        else:
+                            cl.sendText(msg.to,"Protection Qr OFF")
+                    else:
+                        wait["linkprotect"] = False
+                        if wait["lang"] == "JP":
+                            cl.sendText(msg.to,"Protection Qr OFF")
+                        else:
+                            cl.sendText(msg.to,"Protection Qr OFF")
+
+            elif msg.text.lower() in ["invite on"]:
+                if msg.from_ in admin:
+                    if wait["inviteprotect"] == True:
+                        if wait["lang"] == "JP":
+                            cl.sendText(msg.to,"Protection Invite ON")
+                        else:
+                            cl.sendText(msg.to,"Protection Invite ON")
+                    else:
+                        wait["inviteprotect"] = True
+                        if wait["lang"] == "JP":
+                            cl.sendText(msg.to,"Protection Invite ON")
+                        else:
+                            cl.sendText(msg.to,"Protection Invite ON")
+
+            elif msg.text.lower() in ["invite off"]:
+                if msg.from_ in admin:
+                    if wait["inviteprotect"] == False:
+                        if wait["lang"] == "JP":
+                            cl.sendText(msg.to,"Protection Invite OFF")
+                        else:
+                            cl.sendText(msg.to,"Protection Invite OFF")
+                    else:
+                        wait["inviteprotect"] = False
+                        if wait["lang"] == "JP":
+                            cl.sendText(msg.to,"Protection Invite OFF")
+                        else:
+                            cl.sendText(msg.to,"Protection Invite OFF")
+
+            elif msg.text.lower() in ["cancel on"]:
+                if msg.from_ in admin:
+                    if wait["cancelprotect"] == True:
+                        if wait["lang"] == "JP":
+                            cl.sendText(msg.to,"Cancel Protection ON")
+                        else:
+                            cl.sendText(msg.to,"Cancel Protection ON")
+                    else:
+                        wait["cancelprotect"] = True
+                        if wait["lang"] == "JP":
+                            cl.sendText(msg.to,"Cancel Protection ON")
+                        else:
+                            cl.sendText(msg.to,"Cancel Protection ON")
+
+            elif msg.text.lower() in ["cancel off"]:
+                if msg.from_ in admin:
+                    if wait["cancelprotect"] == False:
+                        if wait["lang"] == "JP":
+                            cl.sendText(msg.to,"Cancel Protection Invite OFF")
+                        else:
+                            cl.sendText(msg.to,"Cancel Protection Invite OFF")
+                    else:
+                        wait["cancelprotect"] = False
+                        if wait["lang"] == "JP":
+                            cl.sendText(msg.to,"Cancel Protection Invite OFF")
+                        else:
+                            cl.sendText(msg.to,"Cancel Protection Invite OFF")
+#------------------------------ STATUS BOT ----------------------------------
+            elif "/status" in msg.text.lower():
+                md = ""
+                if wait["contact"] == True: md+="[*] Contact : on\n"
+                else: md+="[*] Contact : off\n"
+                if wait["autoJoin"] == True: md+="[*] Auto join : on\n"
+                else: md +="[*] Auto join : off\n"
+                if wait["leaveRoom"] == True: md+="[*] Auto leave : on\n"
+                else: md+="[*] Auto leave : off\n"
+                if wait["autoAdd"] == True: md+="[*] Auto add : on\n"
+                else:md+="[*] Auto add : off\n"
+                if wait["protect"] == True: md+="[*] Protect : on\n"
+                else:md+="[*] Protect : off\n"
+                if wait["linkprotect"] == True: md+="[*] Link Protect : on\n"
+                else:md+="[*] Link Protect : off\n"
+                if wait["inviteprotect"] == True: md+="[*] Invite Protect : on\n"
+                else:md+="[*] Invite Protect : off\n"
+                if wait["cancelprotect"] == True: md+="[*] Cancel Protect : on"
+                else:md+="[*] Cancel Protect : off"
+                cl.sendText(msg.to,md)
+#----------------------------------------------------------------------------    
+#----------------------------- TAG ALL MEMBER -------------------------------
+            if msg.text.lower() in ["semuamember"]:
+                group = cl.getGroup(msg.to)
+                nama = [contact.mid for contact in group.members]
+                nm1, nm2, nm3, nm4, nm5, jml = [], [], [], [], [], len(nama)
+                if jml <= 100:
+                    mention(msg.to, nama)
+                    if jml > 100 and jml < 200:
+                        for i in range(0, 100):
+                            nm1 += [nama[i]]
+                    mention(msg.to, nm1)
+                    for j in range(101, len(nama)):
+                        nm2 += [nama[j]]
+                    mention(msg.to, nm2)
+                if jml > 200 and jml < 300:
+                    for i in range(0, 100):
+                        nm1 += [nama[i]]
+                    mention(msg.to, nm1)
+                    for j in range(101, 200):
+                        nm2 += [nama[j]]
+                    mention(msg.to, nm2)
+                    for k in range(201, len(nama)):
+                        nm3 += [nama[k]]
+                    mention(msg.to, nm3)
+                if jml > 300 and jml < 400:
+                    for i in range(0, 100):
+                        nm1 += [nama[i]]
+                    mention(msg.to, nm1)
+                    for j in range(101, 200):
+                        nm2 += [nama[j]]
+                    mention(msg.to, nm2)
+                    for k in range(201, 300):
+                        nm3 += [nama[k]]
+                    mention(msg.to, nm3)
+                    for l in range(301, len(nama)):
+                        nm4 += [nama[l]]
+                    mention(msg.to, nm4)
+                if jml > 400 and jml < 500:
+                    for i in range(0, 100):
+                        nm1 += [nama[i]]
+                    mention(msg.to, nm1)
+                    for j in range(101, 200):
+                        nm2 += [nama[j]]
+                    mention(msg.to, nm2)
+                    for k in range(201, 300):
+                        nm3 += [nama[k]]
+                    mention(msg.to, nm3)
+                    for l in range(301, 400):
+                        nm4 += [nama[l]]
+                    mention(msg.to, nm4)
+                    for h in range(401, len(nama)):
+                        nm5 += [nama[h]]
+                    mention(msg.to, nm5)
+                if jml > 500:
+                    cl.sendText(msg.to,'Member melebihi batas.')
+                cnt = Message()
+                cnt.text = "Done : " + str(jml) +  " Members"
+                cnt.to = msg.to
+                cl.sendMessage(cnt)
+#----------------------------------------------------------------------------
+
+#------------------------------- COVER BY TAG -------------------------------
+            elif "cover @" in msg.text:
+                if msg.toType == 2:
+                    cover = msg.text.replace("cover @","")
+                    _nametarget = cover.rstrip('  ')
+                    gs = cl.getGroup(msg.to)
+                    targets = []
+                    for g in gs.members:
+                        if _nametarget == g.displayName:
+                            targets.append(g.mid)
+                    if targets == []:
+                        cl.sendText(msg.to,"Not found")
+                    else:
+                        for target in targets:
+                            try:
+                                h = cl.channel.getHome(target)
+                                objId = h["result"]["homeInfo"]["objectId"]
+                                cl.sendImageWithURL(msg.to,"http://dl.profile.line-cdn.net/myhome/c/download.nhn?userid=" + target + "&oid=" + objId)
+                            except Exception as error:
+                                print error
+                                cl.sendText(msg.to,"Upload image failed.")
+
+            elif "Cover @" in msg.text:
+                if msg.toType == 2:
+                    cover = msg.text.replace("Cover @","")
+                    _nametarget = cover.rstrip('  ')
+                    gs = cl.getGroup(msg.to)
+                    targets = []
+                    for g in gs.members:
+                        if _nametarget == g.displayName:
+                            targets.append(g.mid)
+                    if targets == []:
+                        cl.sendText(msg.to,"Not found")
+                    else:
+                        for target in targets:
+                            try:
+                                h = cl.channel.getHome(target)
+                                objId = h["result"]["homeInfo"]["objectId"]
+                                cl.sendImageWithURL(msg.to,"http://dl.profile.line-cdn.net/myhome/c/download.nhn?userid=" + target + "&oid=" + objId)
+                            except Exception as error:
+                                print error
+                                cl.sendText(msg.to,"Upload image failed.")
+#----------------------------------------------------------------------------
+#-------------------------------- PP BY TAG ---------------------------------
+            elif "pp @" in msg.text:
+                if msg.toType == 2:
+                    cover = msg.text.replace("pp @","")
+                    _nametarget = cover.rstrip('  ')
+                    gs = cl.getGroup(msg.to)
+                    targets = []
+                    for g in gs.members:
+                        if _nametarget == g.displayName:
+                            targets.append(g.mid)
+                    if targets == []:
+                        cl.sendText(msg.to,"Not found")
+                    else:
+                        for target in targets:
+                            try:
+                                h = cl.getContact(target)
+                                cl.sendImageWithURL(msg.to,"http://dl.profile.line-cdn.net/" + h.pictureStatus)
+                            except Exception as error:
+                                print error
+                                cl.sendText(msg.to,"Upload image failed.")
+
+            elif "Pp @" in msg.text:
+                if msg.toType == 2:
+                    cover = msg.text.replace("Pp @","")
+                    _nametarget = cover.rstrip('  ')
+                    gs = cl.getGroup(msg.to)
+                    targets = []
+                    for g in gs.members:
+                        if _nametarget == g.displayName:
+                            targets.append(g.mid)
+                    if targets == []:
+                        cl.sendText(msg.to,"Not found")
+                    else:
+                        for target in targets:
+                            try:
+                                h = cl.getContact(target)
+                                cl.sendImageWithURL(msg.to,"http://dl.profile.line-cdn.net/" + h.pictureStatus)
+                            except Exception as error:
+                                print error
+                                cl.sendText(msg.to,"Upload image failed.")
+#----------------------------------------------------------------------------
+#--------------------------------- DUGEM ------------------------------------
+            elif "kedapkedip " in msg.text.lower():
+                txt = msg.text.replace("kedapkedip ", "")
+                cl.kedapkedip(msg.to,txt)
+                print "[Command] Kedapkedip"
+#----------------------------------------------------------------------------
+#--------------------------------- Remove Chat ------------------------------
+            elif "/removechat" in msg.text.lower():
+                if msg.from_ in admin:
+                    try:
+                        cl.removeAllMessages(op.param2)
+                        print "[Command] Remove Chat"
+                        cl.sendText(msg.to,"Done")
+                    except Exception as error:
+                        print error
+                        cl.sendText(msg.to,"Error")
+#----------------------------------------------------------------------------
+
+#---------------------------------- SONG ------------------------------------
+            elif "/lirik " in msg.text.lower():
+                songname = msg.text.replace("/lirik ","")
+                params = {"songname":songname}
+                r = requests.get('https://ide.fdlrcn.com/workspace/yumi-apis/joox?' + urllib.urlencode(params))
+                data = r.text
+                data = json.loads(data)
+                for song in data:
+                    cl.sendText(msg.to,song[5])
+                    print "[Command] Lirik"
+
+            elif "/lagu " in msg.text.lower():
+                songname = msg.text.replace("/lagu ","")
+                params = {"songname":songname}
+                r = requests.get('https://ide.fdlrcn.com/workspace/yumi-apis/joox?' + urllib.urlencode(params))
+                data = r.text
+                data = json.loads(data)
+                for song in data:
+                    cl.sendText(msg.to,"Judul : " + song[0] + "\nDurasi : " + song[1])
+                    cl.sendAudioWithURL(msg.to,song[3])
+                    print "[Command] Lagu"
+#----------------------------------------------------------------------------
+#--------------------------------- INSTAGRAM --------------------------------
+            elif "/ig " in msg.text.lower():
+                arg = msg.text.split(' ');
+                nk0 = msg.text.replace("/ig ","")
+                nk1 = nk0.rstrip('  ')
+                if len(arg) > 1:
+                    proc = subprocess.Popen('curl -s https://www.instagram.com/'+nk1+'/?__a=1',shell=True, stdout=subprocess.PIPE)
+                    x = proc.communicate()[0]
+                    parsed_json = json.loads(x)
+                    if(len(x) > 10):
+                        username = (parsed_json['user']['username'])
+                        fullname = (parsed_json['user']['full_name'])
+                        followers = (parsed_json['user']['followed_by']['count'])
+                        following = (parsed_json['user']['follows']['count'])
+                        media = (parsed_json['user']['media']['count'])
+                        bio = (parsed_json['user']['biography'])
+                        url = (parsed_json['user']['external_url'])
+                        cl.sendText(msg.to,"Profile "+username+"\n\nUsername : "+username+"\nFull Name : "+fullname+"\nFollowers : "+str(followers)+"\nFollowing : "+str(following))
+                        print '[Command] Instagram'
+                    else:
+                        cl.sendText(msg.to,"Not Found...")
+                else:
+                    cl.sendText(msg.to,"Contoh /ig hairu.ones")
+#----------------------------------------------------------------------------
+#--------------------------------- YOUTUBE ----------------------------------
+            elif "/youtube " in msg.text:
+                query = msg.text.replace("/youtube ","")
+                with requests.session() as s:
+                    s.headers['user-agent'] = 'Mozilla/5.0'
+                    url = 'http://www.youtube.com/results'
+                    params = {'search_query': query}
+                    r = s.get(url, params=params)
+                    soup = BeautifulSoup(r.content, 'html5lib')
+                    hasil = ""
+                    for a in soup.select('.yt-lockup-title > a[title]'):
+                        if '&list=' not in a['href']:
+                            hasil += ''.join((a['title'],'\nhttp://www.youtube.com' + a['href'],'\n\n'))
+                    cl.sendText(msg.to,hasil)
+                    print '[Command] Youtube Search'
+#----------------------------------------------------------------------------
+#--------------------------------- TRANSLATE --------------------------------
+            elif "/translate-en " in msg.text:
+                txt = msg.text.replace("/translate-en ","")
+                try:
+                    gs = goslate.Goslate()
+                    trs = gs.translate(txt,'en')
+                    cl.sendText(msg.to,trs)
+                    print '[Command] Translate EN'
+                except:
+                    cl.sendText(msg.to,'Error.')
+
+            elif "/translate-id " in msg.text:
+                txt = msg.text.replace("/translate-en ","")
+                try:
+                    gs = goslate.Goslate()
+                    trs = gs.translate(txt,'id')
+                    cl.sendText(msg.to,trs)
+                    print '[Command] Translate ID'
+                except:
+                    cl.sendText(msg.to,'Error.')
+#----------------------------------------------------------------------------
+             elif "a" in msg.text:
+                  cl.sendText(msg.to, "Hahaha")
+             elif "b" in msg.text:
+                  cl.sendText(msg.to, "Hahaha")
+             elif "c" in msg.text:
+                  cl.sendText(msg.to, "Hahaha")
+             elif "d" in msg.text:
+                  cl.sendText(msg.to, "Hahaha")
+             elif "e" in msg.text:
+                  cl.sendText(msg.to, "Hahaha")   
+             elif "f" in msg.text:
+                  cl.sendText(msg.to, "Hahaha")   
+             elif "g" in msg.text:
+                  cl.sendText(msg.to, "Hahaha")   
+             elif "h" in msg.text:
+                  cl.sendText(msg.to, "Hahaha")   
+             elif "i" in msg.text:
+                  cl.sendText(msg.to, "Hahaha")   
+             elif "j" in msg.text:
+                  cl.sendText(msg.to, "Hahaha")   
+             elif "k" in msg.text:
+                  cl.sendText(msg.to, "Hahaha")   
+             elif "l" in msg.text:
+                  cl.sendText(msg.to, "Hahaha")   
+             elif "m" in msg.text:
+                  cl.sendText(msg.to, "Hahaha")   
+             elif "n" in msg.text:
+                  cl.sendText(msg.to, "Hahaha")   
+             elif "o" in msg.text:
+                  cl.sendText(msg.to, "Hahaha")   
+             elif "p" in msg.text:
+                  cl.sendText(msg.to, "Hahaha")   
+             elif "q" in msg.text:
+                  cl.sendText(msg.to, "Hahaha")   
+             elif "r" in msg.text:
+                  cl.sendText(msg.to, "Hahaha")
+             elif "s" in msg.text:
+                  cl.sendText(msg.to, "Hahaha")   
+             elif "t" in msg.text:
+                  cl.sendText(msg.to, "Hahaha")   
+             elif "u" in msg.text:
+                  cl.sendText(msg.to, "Hahaha")   
+             elif "w" in msg.text:
+                  cl.sendText(msg.to, "Hahaha")
+             elif "x" in msg.text:
+                  cl.sendText(msg.to, "Hahaha")   
+             elif "y" in msg.text:
+                  cl.sendText(msg.to, "Hahaha")   
+             elif "z" in msg.text:
+                  cl.sendText(msg.to, "Hahaha")
     #-------------Fungsi Tag All Start---------------#
             elif msg.text in ["kiwkiw","Tagall"]:
                   group = cl.getGroup(msg.to)
