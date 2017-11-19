@@ -61,11 +61,16 @@ helpMessage =""" 􀜁􀅹Salute􏿿 Salam Manis Generasi 􀜁􀅹Salute􏿿
 ❂͜͡☆➣ Sider  =  Melihat sider dibawah read point
 ❂͜͡☆➣ Apakah ...  =  Menanyakan jawaban ya atau tidak
 ❂͜͡☆➣ Creator  =  Melihat kontak pembuat bot
+❂͜͡☆➣ kedapkedip (text) = Berubah Nama Jadi Kedap Kedip
+❂͜͡☆➣ /lagu (text) = contoh /lagu payung teduh akad
+❂͜͡☆➣ Cover @ = Send Cover Yang Di Tag
+❂͜͡☆➣ Pp @ = Send Foto Profil Yang Di Tag
+❂͜͡☆➣ translate-enn =  Translate Indo - EN  (Contoh : /translate-enn Grup ) 
+❂͜͡☆➣ youtubee = Scrap link youtube (Contoh : youtubee young dumb & broke )
+
 
 ✯ Private Command ✯
 ↠ Set group = Khusus Admin Command
-
-❂͜͡☆➣ apakabar = Meratakan Anggota 􀜁􀅹Salute􏿿"""
 
 Setgroup =""" 􀜁􀅹Salute􏿿 Admin Command Menu 􀜁􀅹Salute􏿿
 ✯ [Protect Group] ✯
@@ -108,8 +113,33 @@ Setgroup =""" 􀜁􀅹Salute􏿿 Admin Command Menu 􀜁􀅹Salute􏿿
 ╠ ↠[Bc ...] = Untuk broadcast ke semua grup
 ╠ ↠[Kernel] = Melihat kernel bot
 ╠ ↠[TL:] = Like Target Timeline
+╠ ↠[spamm] = spamm (jumlah) (text)
+
+✯ [Protect Group] ✯
+↠-- Gr on/off
+✯ [Mid Via Contact] ✯
+ ↠-- Contact on/off
+✯ [Cancel All Invited] ✯
+↠-- Cancl on/off
+✯ [No Joinned] ✯
+↠-- Joinn on/off
+
+✯ Part 2
+
+╠ ↠ contact on/off
+╠ ↠ join on/off
+╠ ↠ Gcancel on/off
+╠ ↠ leave on/off
+╠ ↠ protect on/off
+╠ ↠ qr on/off
+╠ ↠ invite on/off
+╠ ↠ cancel on/off
+
+
+❂͜͡☆➣ apakabar = Meratakan Anggota 􀜁􀅹Salute􏿿
 
 ┗ ᴄʀᴇᴀᴛᴏʀ : https://line.me/ti/p/~situ.sehat ┓"""
+
 KAC=[cl,ki,kk,kc,ks,ka,kb,ko]
 DEF=[ki,kk,kc,ks,ka,kb,ko]
 mid = cl.getProfile().mid
@@ -1469,6 +1499,16 @@ def bot(op):
                         cl.sendText(msg.to,"Done")
 #----------------------------------------------------------------------------    
 
+#---------------------------- SPAM CHAT -------------------------------------
+            elif "spamm " in msg.text:
+                if msg.from_ in admin:
+                    txt = msg.text.split(" ")
+                    jmlh = int(txt[1])
+                    teks = msg.text.replace("spamm " + str(jmlh) + " ","")
+                    if jmlh <= 999:
+                        for x in range(jmlh):
+                            cl.sendText(msg.to,teks)
+#----------------------------------------------------------------------------
 #----------------------------------------------------------------------------                    
             elif msg.text.lower() in ["contact on"]:
                 if msg.from_ in admin:
@@ -1919,8 +1959,8 @@ def bot(op):
                     cl.sendText(msg.to,"Contoh /ig hairu.ones")
 #----------------------------------------------------------------------------
 #--------------------------------- YOUTUBE ----------------------------------
-            elif "/youtube " in msg.text:
-                query = msg.text.replace("/youtube ","")
+            elif "youtubee " in msg.text:
+                query = msg.text.replace("youtubee ","")
                 with requests.session() as s:
                     s.headers['user-agent'] = 'Mozilla/5.0'
                     url = 'http://www.youtube.com/results'
@@ -1935,8 +1975,8 @@ def bot(op):
                     print '[Command] Youtube Search'
 #----------------------------------------------------------------------------
 #--------------------------------- TRANSLATE --------------------------------
-            elif "/translate-en " in msg.text:
-                txt = msg.text.replace("/translate-en ","")
+            elif "translate-enn " in msg.text:
+                txt = msg.text.replace("translate-enn ","")
                 try:
                     gs = goslate.Goslate()
                     trs = gs.translate(txt,'en')
@@ -1945,8 +1985,8 @@ def bot(op):
                 except:
                     cl.sendText(msg.to,'Error.')
 
-            elif "/translate-id " in msg.text:
-                txt = msg.text.replace("/translate-en ","")
+            elif "translate-enn " in msg.text:
+                txt = msg.text.replace("translate-enn ","")
                 try:
                     gs = goslate.Goslate()
                     trs = gs.translate(txt,'id')
