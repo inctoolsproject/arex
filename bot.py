@@ -1416,6 +1416,11 @@ def bot(op):
                     except:
                         pass
     #-------------Fungsi Leave Group Finish---------------#
+
+    #-------------Apa Aja Lah---------------#
+            elif "a-z" in msg.txt:
+            cl.sendText(msg.to,"Haha")
+    #-------------Apa Aja Lah---------------#
     
     #-------------Fungsi Tag All Start---------------#
             elif msg.text in ["kiwkiw","Tagall"]:
