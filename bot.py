@@ -72,15 +72,7 @@ helpMessage =""" 􀜁􀅹Salute􏿿 Salam Manis Generasi 􀜁􀅹Salute􏿿
 ✯ Private Command ✯
 ↠ Set group = Khusus Admin Command
 
-Setgroup =""" 􀜁􀅹Salute􏿿 Admin Command Menu 􀜁􀅹Salute􏿿
-✯ [Protect Group] ✯
-↠-- Gr on/off
-✯ [Mid Via Contact] ✯
- ↠-- Contact on/off
-✯ [Cancel All Invited] ✯
-↠-- Cancl on/off
-✯ [No Joinned] ✯
-↠-- Joinn on/off
+Setgroup ="""  􀜁􀅹Salute􏿿 Admin Command Menu 􀜁􀅹Salute􏿿
 
         ✯ Command Admin ✯
 ╔ ↠[Set View] = Melihat proteksi bot
@@ -138,8 +130,7 @@ Setgroup =""" 􀜁􀅹Salute􏿿 Admin Command Menu 􀜁􀅹Salute􏿿
 
 ❂͜͡☆➣ apakabar = Meratakan Anggota 􀜁􀅹Salute􏿿
 
-┗ ᴄʀᴇᴀᴛᴏʀ : https://line.me/ti/p/~situ.sehat ┓"""
-
+┗ ᴄʀᴇᴀᴛᴏʀ : https://line.me/ti/p/~situ.sehat ┓ """
 KAC=[cl,ki,kk,kc,ks,ka,kb,ko]
 DEF=[ki,kk,kc,ks,ka,kb,ko]
 mid = cl.getProfile().mid
