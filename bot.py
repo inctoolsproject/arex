@@ -14,11 +14,11 @@ cl.login(token="EmZHqp7hjy5I4IystK33.b151yOadpUwvZ3Q/9r80aW.SiEMeDIMGorcgMQMH8Jf
 cl.loginResult()
 
 kk = LINETCR.LINE()
-kk.login(token="EkRQbZZErjrx5uujDyza.84BapPm+V0nuPZ1PkEq6/G.V3aSBbMrbByVhVmOx9yrMp4S7FTJqw6cetH43/pOLEA=")
+kk.login(token="Emc7klTTldgXZRQvMQa1.0yYU4VQKZ4xb2+W3wjZN0q.Ej0xYWE9ugqoRM6gLinP9UXLWnRiFE8CmDt0ZdY7VrA=")
 kk.loginResult()
 
 ki = LINETCR.LINE()
-ki.login(token="EkGIlVSPEV2reF9yJPV5.YmK3RE2Gh7r1rsdbSBQibq.tKU1hvspJfPh6q1vCZfK8M8+U0/B8bWA3FsxqPS7pMM=")
+ki.login(token="EmsQoGM5rmLAzwrO3gNd.UvZQ8iaX1kDhGbAShThZ3q.WazJjl8fQuK9N5oKJXRgC5p9xV7GFOYS0QEht0eKTSE=")
 ki.loginResult()
 
 kc = LINETCR.LINE()
