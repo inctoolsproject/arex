@@ -3,6 +3,9 @@ import requests,shutil,random,string,json,tempfile
 import unicodedata
 from random import randint
 from Api import Poll, Talk, channel
+import requests,tempfile
+import shutil
+import json
 from time import time
 from datetime import datetime
 from lib.curve.ttypes import *
