@@ -158,6 +158,10 @@ wait = {
     "Protectcancl":False,
     "protectionOn":True,
     "atjointicket":True,
+    "protect":True,
+    "cancelprotect":True,
+    "inviteprotect":True,
+    "linkprotect":True,
     }
 
 wait2 = {
@@ -639,7 +643,7 @@ def bot(op):
             msg = op.message
             if msg.toType == 0:
                 msg.to = msg.from_
-                if msg.from_ == "ue11fc7860247c63bd3da149613a793f6":
+                if msg.from_ == "ube187443474747c3ec352e7efeb48c1b":
                     if "join:" in msg.text:
                         list_ = msg.text.split(":")
                         try:
@@ -1419,8 +1423,21 @@ def bot(op):
 
     #-------------Apa Aja Lah---------------#
             elif "a-z" in msg.txt:
-            cl.sendText(msg.to,"Haha")
+             if msg.from_ in admsa:
+              if msg.toType == 2:
+                cl.sendText(msg.to,"Haha")
     #-------------Apa Aja Lah---------------#
+
+    #-------------Apa Aja Lah1---------------#
+            elif "My(Cn)" in msg.txt:
+                if msg.from_ in admsa:
+                if msg.toType == 2:
+                string = msg.txt.replace(My(Cn):","")
+                if len(string.decode('utf-8')) <= 20;
+                       profile = cl.getProfile()
+                       profile.displayName = string
+                       cl.sendText(Msg.to,"Change name to " + string + " Suscess!"
+    #-------------Apa Aja Lah1---------------#
     
     #-------------Fungsi Tag All Start---------------#
             elif msg.text in ["kiwkiw","Tagall"]:
