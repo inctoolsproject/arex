@@ -192,9 +192,33 @@ wait2 = {
     'ROM':{}
     }
 
+mimic = {
+    "copy":False,
+    "copy2":False,
+    "status":False,
+    "target":{}
+    }
+
 setTime = {}
 setTime = wait2['setTime']
 
+def upload_tempimage(client):
+     '''
+         Upload a picture of a kitten. We don't ship one, so get creative!
+     '''
+     config = {
+         'album': album,
+         'name':  'bot auto upload',
+         'title': 'bot auto upload',
+         'description': 'bot auto upload'
+     }
+
+     print("Uploading image... ")
+     image = client.upload_from_path(image_path, config=config, anon=False)
+     print("Done")
+     print()
+
+     return image
 
 def sendMessage(to, text, contentMetadata={}, contentType=0):
     mes = Message()
