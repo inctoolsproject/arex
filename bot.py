@@ -35,8 +35,14 @@ print "Login Suscess"
 reload(sys)
 sys.setdefaultencoding('utf-8')
 helpMessage ="""
+!FiturMenu!
+↠ memberr
+↠ adminn
+↠ protecy
+↠ mimicc
+↠ creatorr"""
 
-==++==Menu==++==
+memberrMessage ="""==++==Menu==++==
 ✒ Me
 ✒ Id
 ✒ Mid
@@ -57,9 +63,9 @@ helpMessage ="""
 ✒ Comment: 
 ✒ Cbroadcast text
 ✒ Gbroadcast text
-✒ Reject
+✒ Reject"""
 
->==========Command Group----->
+cmdadminMessage =""">==========Command Group----->
 
 ↠ Creator
 ↠ Gn: text
@@ -107,9 +113,9 @@ helpMessage ="""
 ↠ Mungkinkah (Text)
 ↠ kedapkedip (Text)
 ↠ /translate-en
-↠ /translate-id
+↠ /translate-id"""
 
->==========Command----->
+creatorrMessage =""">==========Command----->
 
 ╔ ↠ Kawan / KawanAked!
 ╠ ↠ Akedcancel
@@ -122,20 +128,37 @@ helpMessage ="""
 ╠ ↠ Aked1-Aked2 gurl
 ╠ ↠ Aked1-Aked3 gift
 ╠ ↠ Aked1-Aked3 rename:
-╠ ↠ All: rename all:
-╠ ↠ Allbio: Isi bio:
+╠ ↠ All: (rename all)
+╠ ↠ Allbio: (Isi bio)
 ╠ ↠ Aked1-Aked4 rgroup
 ╠ ↠ Aked1-Aked4 join
 ╠ ↠ Aked1-Aked4 bye
 ╠ ↠ Aked1-Aked2 link on/off
-╠ ↠ akedbaik
+╠ ↠ akedbaik"""
 
->=========Command Private Protect----->
+mimicMessage ="""  !Command Mimic!
 
-✯ Qr on/off
-✯ Backup on/off
-✯ Protect On/off
-✯ Namelock On/off
+.====+Mimic on/off+====.
+
+✯ Mimic @
+✯ Mimic:add: @
+✯ Mimic:del: @
+✯ ListTarget"""
+
+protecyMessage =""">=========Command Private Protect----->
+
+[􀜁􀅹Salute􏿿] Qr on/off
+[􀜁􀅹Salute􏿿] Backup on/off
+[􀜁􀅹Salute􏿿] Protect On/off
+[􀜁􀅹Salute􏿿] Namelock On/off
+[􀜁􀅹Salute􏿿] contact on/off
+[􀜁􀅹Salute􏿿] join on/off
+[􀜁􀅹Salute􏿿] Gcancel on/off
+[􀜁􀅹Salute􏿿] leave on/off
+[􀜁􀅹Salute􏿿] protect on/off
+[􀜁􀅹Salute􏿿] qr on/off
+[􀜁􀅹Salute􏿿] invite on/off
+[􀜁􀅹Salute􏿿] cancel on/off
 """
 
 KAC=[cl,ki,kk,kc]
@@ -2024,12 +2047,40 @@ def bot(op):
                     cl.sendText(msg.to,msg.text)
             elif msg.text is None:
                 return
-            elif msg.text in ["Key","key"]:
-                print "\nHelp pick up..."
-                if wait["lang"] == "JP":
-                    cl.sendText(msg.to, helpMessage + "")
-                else:
-                    cl.sendText(msg.to,helpt)
+            elif msg.text in ["Help","help"]:
+					if wait["lang"] == "JP":
+						cl.sendText(msg.to,helpMessage)
+					else:
+						cl.sendText(msg.to,helpt)
+            elif msg.text in ["memberr","Memberr"]:
+					if wait["lang"] == "JP":
+						cl.sendText(msg.to,memberrMessage)
+					else:
+						cl.sendText(msg.to,memberrt)
+            elif msg.text in ["Protecy","protecy"]:
+				if msg.from_ in admin:
+					if wait["lang"] == "JP":
+						cl.sendText(msg.to,protecyMessage)
+					else:
+						cl.sendText(msg.to,protecyt)
+            elif msg.text in ["Mimicc","mimicc"]:
+				if msg.from_ in admin:
+					if wait["lang"] == "JP":
+						cl.sendText(msg.to,mimicMessage)
+					else:
+						cl.sendText(msg.to,mimict)
+            elif msg.text in ["adminn","adminn"]:
+				if msg.from_ in admin:
+					if wait["lang"] == "JP":
+						cl.sendText(msg.to,cmdadminMessage)
+					else:
+						cl.sendText(msg.to,cmdadmint)
+            elif msg.text in ["Creatorr","creatorr"]:
+				if msg.from_ in creator:
+					if wait["lang"] == "JP":
+						cl.sendText(msg.to,creatorrMessage)
+					else:
+						cl.sendText(msg.to,creatorrt)
             elif ("Gn: " in msg.text):
                 if msg.toType == 2:
                     X = cl.getGroup(msg.to)
@@ -3143,11 +3194,7 @@ def bot(op):
                         cl.sendText(msg.to,"Already。")
 
 
-            elif msg.text in ["Set Group"]:
-            	print "Setting pick up..."
-                md = "===SETTING ADMIN SAJA YA\n"
-                
-                
+            elif msg.text in ["StatusGroup"]:
                 if wait["likeOn"] == True: md+="��Auto like : on\n"
                 else:md+="��Auto like : off\n"
                 if wait["copy"] == True: md+="��Mimic : on\n"
@@ -4650,76 +4697,101 @@ def bot(op):
                    except Exception as e:
                        cl.sendText(msg.to, str(e))
 #==========================================
-            elif msg.text in ["Mimic on","mimic on"]:
-                    if wait3["copy"] == True:
-                        if wait["lang"] == "JP":
-                            cl.sendText(msg.to,"Already on")
-                        else:
-                            cl.sendText(msg.to,"Mimic On")
-                    else:
-                    	wait3["copy"] = True
-                    	if wait["lang"] == "JP":
-                    		cl.sendText(msg.to,"Mimic On")
-                        else:
-    	                	cl.sendText(msg.to,"Already on")
-            elif msg.text in ["Mimic off","mimic:off"]:
-                    if wait3["copy"] == False:
-                        if wait["lang"] == "JP":
-                            cl.sendText(msg.to,"Already on")
-                        else:
-                            cl.sendText(msg.to,"Mimic Off")
-                    else:
-                    	wait3["copy"] = False
-                    	if wait["lang"] == "JP":
-                    		cl.sendText(msg.to,"Mimic Off")
-                        else:
-	                    	cl.sendText(msg.to,"Already on")
-            elif msg.text in ["Target list"]:
-                        if wait3["target"] == {}:
-                            cl.sendText(msg.to,"nothing")
-                        else:
-                            mc = "Target mimic user\n"
-                            for mi_d in wait3["target"]:
-                                mc += "✔️ "+cl.getContact(mi_d).displayName + "\n"
-                            cl.sendText(msg.to,mc)
-
-            elif "Mimic target " in msg.text:
-                        if wait3["copy"] == True:
-                            siapa = msg.text.replace("Mimic target ","")
-                            if siapa.rstrip(' ') == "me":
-                                wait3["copy2"] = "me"
-                                cl.sendText(msg.to,"Mimic change to me")
-                            elif siapa.rstrip(' ') == "target":
-                                wait3["copy2"] = "target"
-                                cl.sendText(msg.to,"Mimic change to target")
-                            else:
-                                cl.sendText(msg.to,"I dont know")
-            elif "Target @" in msg.text:
-                        target = msg.text.replace("Target @","")
-                        gc = cl.getGroup(msg.to)
-                        targets = []
-                        for member in gc.members:
-                            if member.displayName == target.rstrip(' '):
-                                targets.append(member.mid)
-                        if targets == []:
-                            cl.sendText(msg.to, "User not found")
-                        else:
-                            for t in targets:
-                                wait3["target"][t] = True
-                            cl.sendText(msg.to,"Target added")
-            elif "Del target @" in msg.text:
-                        target = msg.text.replace("Del target @","")
-                        gc = cl.getGroup(msg.to)
-                        targets = []
-                        for member in gc.members:
-                            if member.displayName == target.rstrip(' '):
-                                targets.append(member.mid)
-                        if targets == []:
-                            cl.sendText(msg.to, "User not found")
-                        else:
-                            for t in targets:
-                                del wait3["target"][t]
-                            cl.sendText(msg.to,"Target deleted")
+            elif msg.from_ in mimic["target"] and mimic["status"] == True and mimic["target"][msg.from_] == True:
+            	text = msg.text
+            	if text is not None:
+            		cl.sendText(msg.to,text)
+            		ki.sendText(msg.to,text)
+            		kc.sendText(msg.to,text)
+            	else:
+            		if msg.contentType == 7:
+            			msg.contentType = 7
+            			msg.text = None
+            			msg.contentMetadata = {
+            							 	 "STKID": "6",
+            							 	 "STKPKGID": "1",
+            							 	 "STKVER": "100" }
+            			cl.sendMessage(msg)
+            		elif msg.contentType == 13:
+            			msg.contentType = 13
+            			msg.contentMetadata = {'mid': msg.contentMetadata["mid"]}
+            			cl.sendMessage(msg)
+            			ki.sendMessage(msg)
+            			kc.sendMessage(msg)
+            elif "Mimic:" in msg.text:
+            	if msg.from_ in admin:
+            		cmd = msg.text.replace("Mimic:","")
+            		if cmd == "on":
+            			if mimic["status"] == False:
+            				mimic["status"] = True
+            				cl.sendText(msg.to,"Mimic on")
+            			else:
+            				cl.sendText(msg.to,"Mimic already on")
+            		elif cmd == "off":
+            			if mimic["status"] == True:
+            				mimic["status"] = False
+            				cl.sendText(msg.to,"Mimic off")
+            			else:
+            				cl.sendText(msg.to,"Mimic already off")
+            		elif "add:" in cmd:
+            			target0 = msg.text.replace("Mimic:add:","")
+            			target1 = target0.lstrip()
+            			target2 = target1.replace("@","")
+            			target3 = target2.rstrip()
+            			_name = target3
+            			gInfo = cl.getGroup(msg.to)
+            			targets = []
+            			for a in gInfo.members:
+            				if _name == a.displayName:
+            					targets.append(a.mid)
+            			if targets == []:
+            				cl.sendText(msg.to,"No targets")
+            			else:
+            				for target in targets:
+            					try:
+            						mimic["target"][target] = True
+            						cl.sendText(msg.to,"Success added target")
+            						#cl.sendMessageWithMention(msg.to,target)
+            						break
+            					except:
+            						cl.sendText(msg.to,"Failed")
+            						break
+            		elif "del:" in cmd:
+            			target0 = msg.text.replace("Mimic:del:","")
+            			target1 = target0.lstrip()
+            			target2 = target1.replace("@","")
+            			target3 = target2.rstrip()
+            			_name = target3
+            			gInfo = cl.getGroup(msg.to)
+            			targets = []
+            			for a in gInfo.members:
+            				if _name == a.displayName:
+            					targets.append(a.mid)
+            			if targets == []:
+            				cl.sendText(msg.to,"No targets")
+            			else:
+            				for target in targets:
+            					try:
+            						del mimic["target"][target]
+            						cl.sendText(msg.to,"Success deleted target")
+            						#cl.sendMessageWithMention(msg.to,target)
+            						break
+            					except:
+            						cl.sendText(msg.to,"Failed!")
+            						break
+            		elif cmd == "ListTarget":
+            			if mimic["target"] == {}:
+            				cl.sendText(msg.to,"No target")
+                    	else:
+                    		lst = "<<Lit Target>>"
+                    		total = len(mimic["target"])
+                    		for a in mimic["target"]:
+                				if mimic["target"][a] == True:
+                					stat = "On"
+                				else:
+                					stat = "Off"
+                				lst += "\n->" + cl.getContact(mi_d).displayName + " | " + stat
+                                cl.sendText(msg.to,lst + "\nTotal:" + total)
 #==========================================
             elif msg.text in ["Ruqyah"]:
                 if msg.from_ in admin:
