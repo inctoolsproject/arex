@@ -3752,31 +3752,45 @@ def bot(op):
                     cl.sendText(msg.to, str (e))
 
 #=================================================
-            elif msg.text == "Cek":
-                    cl.sendText(msg.to, "Heiiiii.")
+#------------------------------- CHECK SIDER --------------------------------
+            if msg.text.lower() in ["/set"]:
+                if msg.toType == 2:
+                    cl.sendText(msg.to, "Sini Muncul")
                     try:
                         del wait2['readPoint'][msg.to]
                         del wait2['readMember'][msg.to]
                     except:
-                           pass
-                    now2 = datetime.now()
+                        pass
                     wait2['readPoint'][msg.to] = msg.id
                     wait2['readMember'][msg.to] = ""
-                    wait2['setTime'][msg.to] = datetime.now().strftime('%Y-%m-%d %H:%M')
+                    wait2['setTime'][msg.to] = datetime.datetime.today().strftime('%Y-%m-%d %H:%M:%S')
                     wait2['ROM'][msg.to] = {}
-                    print wait2
-            elif msg.text == "Sider":
+                    print "[Command] Set"
+
+            if msg.text.lower() in ["/check"]:
+                if msg.toType == 2:
                     if msg.to in wait2['readPoint']:
                         if wait2["ROM"][msg.to].items() == []:
                             chiya = ""
                         else:
                             chiya = ""
                             for rom in wait2["ROM"][msg.to].items():
-                                print rom
+                                print "[Command] Check"
                                 chiya += rom[1] + "\n"
-                        cl.sendText(msg.to, "<============%s\n================\n%s==============\n║Readig point creation:\n║ [%s]\n============="  % (wait2['readMember'][msg.to],chiya,setTime[msg.to]))
+                        cl.sendText(msg.to, "✔ Read : %s\n\n✖ Sider :\n%s\nPoint creation date n time:\n[%s]"  % (wait2['readMember'][msg.to],chiya,setTime[msg.to]))
+                        try:
+                            del wait2['readPoint'][msg.to]
+                            del wait2['readMember'][msg.to]
+                        except:
+                            pass
+                        wait2['readPoint'][msg.to] = msg.id
+                        wait2['readMember'][msg.to] = ""
+                        wait2['setTime'][msg.to] = datetime.datetime.today().strftime('%Y-%m-%d %H:%M:%S')
+                        wait2['ROM'][msg.to] = {}
+                        print "[Command] Set"
                     else:
-                        cl.sendText(msg.to, "Ketik kau dulu Cek baru Sider")
+                        cl.sendText(msg.to,"Read point tidak tersedia, Silahkan ketik /set untuk membuat Read point.")
+#----------------------------------------------------------------------------
 						
 #========================================
 #---------------FUNGSI RATAIN GRUP TANPA KICK SESAMA BOT/Admin/Bots----------#
