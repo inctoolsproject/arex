@@ -231,6 +231,12 @@ res = {
     'au':{},
 }
 
+mimic = {
+    "copy":False,
+    "copy2":False,
+    "status":False,
+    "target":{}
+    }
 
 setTime = {}
 setTime = wait2['setTime']
