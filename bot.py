@@ -9,19 +9,19 @@ from threading import Thread
 from pyowm import OWM
 
 cl = LINETCR.LINE()
-cl.login(token="En3MAFjptqWleEaIHBlb.VHH0q0Dhr8pSns5/+RsmgW.ZBSYYb+xqyoRYlPM37tNdKhDv7kzmf1tLmR8olEXOH4=")
+cl.login(token="aked")
 cl.loginResult
 
 kk = LINETCR.LINE()
-kk.login(token="EmsQoGM5rmLAzwrO3gNd.UvZQ8iaX1kDhGbAShThZ3q.WazJjl8fQuK9N5oKJXRgC5p9xV7GFOYS0QEht0eKTSE=")
+kk.login(token="aked")
 kk.loginResult
 
 ki = LINETCR.LINE()
-ki.login(token="EmJHJsDwCvQswOGh1jW8.bfmfUwtccO+1N7EuVwD+Ma.tCei5rmH1IadgptJM+9ELtHyXuMG6spGx/l4nv/GD88=")
+ki.login(token="aked")
 ki.loginResult
 
 kc = LINETCR.LINE()
-kc.login(token="EmZHqp7hjy5I4IystK33.b151yOadpUwvZ3Q/9r80aW.SiEMeDIMGorcgMQMH8JfCDN15dD5GW8fFN6kRK6874I=")
+kc.login(token="aked")
 kc.loginResult
 
 # client_id = 'cdd41f3c5f416wdd32721bfec232ae214'
