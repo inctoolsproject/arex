@@ -2,7 +2,6 @@
 
 import LINETCR
 from LINETCR.lib.curve.ttypes import *
-from gtts import gTTS
 import urllib
 import urllib2
 import urllib3
