@@ -60,6 +60,9 @@ helpMessage ="""Bot Command
 > .instagram
 > .Youtube
 > .reboot
+> Rutime
+> Pahala @
+> Dosa @
 ========================
 ========================
     Status Group
@@ -124,22 +127,20 @@ wait = {
     "dblack":False,
     "clock":False,
     "status":False,
-    "likeOn":False,
+    "likeOn":True,
     "pname":False,
     "blacklist":{},
     "whitelist":{},
     "wblacklist":False,
     "dblacklist":False,
-    "qr":False,
+    "qr":True,
     "protectionOn":True,
-    "protect":False,
-    "cancelprotect":False,
-    "inviteprotect":False,
-    "linkprotect":False,
+    "protect":True,
+    "cancelprotect":True,
+    "inviteprotect":True,
+    "linkprotect":True,
     "atjointicket":True
-    "Backup":False,
-    "protectionOn":False,
-    "winvite":False,
+    "winvite":True,
     "pnharfbot":{},
     "pname":{},
     "pro_name":{},
