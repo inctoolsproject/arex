@@ -139,11 +139,7 @@ wait = {
     "cancelprotect":True,
     "inviteprotect":True,
     "linkprotect":True,
-    "atjointicket":True
-    "winvite":True,
-    "pnharfbot":{},
-    "pname":{},
-    "pro_name":{},
+    "atjointicket":True,
     }
 wait2 = {
     'readPoint':{},
