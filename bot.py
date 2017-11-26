@@ -2,9 +2,16 @@
 
 import LINETCR
 from LINETCR.lib.curve.ttypes import *
-from datetime import datetime
-import time,random,sys,json,codecs,threading,glob,re,datetime,subprocess,urllib3,os,requests,urllib,goslate,pyowm
+from gtts import gTTS
+import urllib
+import urllib2
+import urllib3
+import requests
+import wikipedia
+import goslate
 from bs4 import BeautifulSoup
+from datetime import datetime
+import time,random,sys,json,codecs,threading,glob,re,os,subprocess
 from threading import Thread
 from pyowm import OWM
 
@@ -2688,7 +2695,7 @@ def bot(op):
                     broadcasttxt = msg.text.replace("/bc ", "")
                     orang = cl.getAllContactIds()
                     for manusia in orang:
-                        cl.sendText(manusia,(broadcasttxt))
+                        kc.sendText(manusia,(broadcasttxt))
                         print "[Command] BC Contact"
 #----------------------------------------------------------------------------
 #----------------------------- BROADCAST Group ------------------------------
@@ -3182,6 +3189,25 @@ def bot(op):
 	            data = json.loads(data)
 	            for song in data:
 		            cl.sendMessage(msg.to, song[4])
+
+    #-------------------Music------------------ 
+            elif '/music ' in msg.text.lower():
+                try:
+                    songname = msg.text.lower().replace('/music ','')
+                    params = {'songname': songname}
+                    r = requests.get('http://ide.fdlrcn.com/workspace/yumi-apis/joox?' + urllib.urlencode(params))
+                    data = r.text
+                    data = json.loads(data)
+                    for song in data:
+                        hasil = 'This is Your Music\n'
+                        hasil += 'Judul : ' + song[0]
+                        hasil += '\nDurasi : ' + song[1]
+                        hasil += '\nLink Download : ' + song[4]
+                        cl.sendText(msg.to, hasil)
+                        cl.sendText(msg.to, "Please Wait for audio...")
+                        cl.sendAudioWithURL(msg.to, song[4])
+		except Exception as njer:
+		        cl.sendText(msg.to, str(njer))
 #----------------------------------------------------------------------------
 #--------------------------------- Mimic --------------------------------
             elif msg.from_ in mimic["target"] and mimic["status"] == True and mimic["target"][msg.from_] == True:
@@ -3359,6 +3385,30 @@ def bot(op):
                         cl.sendText(msg.to,"Not Found...")
                 else:
                     cl.sendText(msg.to,"Contoh /ig hairu.ones")
+
+
+            elif '/cekig ' in msg.text.lower():
+                try:
+                    instagram = msg.text.lower().replace("/cekig ","")
+                    html = requests.get('https://www.instagram.com/' + instagram + '/?')
+                    soup = BeautifulSoup(html.text, 'html5lib')
+                    data = soup.find_all('meta', attrs={'property':'og:description'})
+                    text = data[0].get('content').split()
+                    data1 = soup.find_all('meta', attrs={'property':'og:image'})
+                    text1 = data1[0].get('content').split()
+                    user = "Nama: " + text[-2] + "\n"
+                    user1 = text[-1]
+                    followers = "Pengikut: " + text[0] + "\n"
+                    following = "Mengikuti: " + text[2] + "\n"
+                    post = "Post: " + text[4] + "\n"
+                    link = "Link: " + "https://www.instagram.com/" + instagram
+                    detail = "Info Akun: " + user1 + "\n\n"
+                    #details = ""
+                    cl.sendText(msg.to, detail + user + followers + following + post + link)
+                    cl.sendImageWithURL(msg.to, text1[0])
+                    #cl.sendImage(msg.to, text1[0])
+                except Exception as njer:
+                	cl.sendText(msg.to, str(njer))
 #----------------------------------------------------------------------------
 #--------------------------------- YOUTUBE ----------------------------------
             elif "/Youtube " in msg.text:
@@ -3423,13 +3473,85 @@ def bot(op):
                     print '[Command] Translate ID'
                 except:
                     cl.sendText(msg.to,'Error.')
+
+#-----------------------------------------------
+            elif "/say-id: " in msg.text.lower():
+                    query = msg.text.lower().replace("/say-id: ","")
+                    with requests.session() as s:
+                        s.headers['user-agent'] = 'Mozilla/5.0'
+                        url = 'https://google-translate-proxy.herokuapp.com/api/tts'
+                        params = {'language': 'id', 'speed': '1', 'query': query}
+                        r    = s.get(url, params=params)
+                        mp3  = r.url
+                        cl.sendAudioWithURL(msg.to, mp3)
+#-----------------------------------------------
+            elif "/say-en: " in msg.text.lower():
+                    query = msg.text.lower().replace("/say-en: ","")
+                    with requests.session() as s:
+                        s.headers['user-agent'] = 'Mozilla/5.0'
+                        url = 'https://google-translate-proxy.herokuapp.com/api/tts'
+                        params = {'language': 'en', 'speed': '1', 'query': query}
+                        r    = s.get(url, params=params)
+                        mp3  = r.url
+                        cl.sendAudioWithURL(msg.to, mp3)
+#-----------------------------------------------
+            elif "/say-jp: " in msg.text.lower():
+                    query = msg.text.lower().replace("/say-jp: ","")
+                    with requests.session() as s:
+                        s.headers['user-agent'] = 'Mozilla/5.0'
+                        url = 'https://google-translate-proxy.herokuapp.com/api/tts'
+                        params = {'language': 'ja', 'speed': '1', 'query': query}
+                        r    = s.get(url, params=params)
+                        mp3  = r.url
+                        cl.sendAudioWithURL(msg.to, mp3)
 #----------------------------------------------------------------------------
+#---------------------------------------------------------------
+            elif "cek" in msg.text:
+            	cl.sendText(msg.to,"contoh : /cek 16-05-2004")
+#---------------------------------------------------------
+            elif "/cek " in msg.text:
+                tanggal = msg.text.replace("/cek ","")
+                r=requests.get('https://script.google.com/macros/exec?service=AKfycbw7gKzP-WYV2F5mc9RaR7yE3Ve1yN91Tjs91hp_jHSE02dSv9w&nama=ervan&tanggal='+tanggal)
+                data=r.text
+                data=json.loads(data)
+                lahir = data["data"]["lahir"]
+                usia = data["data"]["usia"]
+                ultah = data["data"]["ultah"]
+                zodiak = data["data"]["zodiak"]
+                cl.sendText(msg.to,"Tanggal Lahir : "+lahir+"\n\nUmur : "+usia+"\n\nUltah : "+ultah+"\n\nZodiak : "+zodiak)
 #--------------------------------- ABSEN ------------------------------------
             elif msg.text.lower() in ["absen"]:
                 ki.sendText(msg.to,"Siap Boy  􀜁􀅹Salute􏿿")
                 kk.sendText(msg.to,"Siap Boy 􀜁􀅹Salute􏿿")
                 kc.sendText(msg.to,"Siap Boy 􀜁􀅹Salute􏿿")
 #----------------------------------------------------------------------------
+            elif msg.text in ["/quote"]:
+                quote = ['Barangsiapa yang suka meninggalkan barang di tempat umum maka ia akan kehilangan barangnya tersebut','Kunci KESUKSESAN itu cuma satu, yakni lu harus BERHASIL']
+                rio = random.choice(quote)
+                cl.sendText(msg.to,rio)
+#---------------------------------------------------------
+#---------------------------------------------------------
+            elif msg.text in ["/time","/waktu"]:
+                timeNow = datetime.now()
+                timeHours = datetime.strftime(timeNow,"(%H:%M)")
+                day = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday","Friday", "Saturday"]
+                hari = ["Minggu", "Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu"]
+                bulan = ["Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember"]
+                inihari = datetime.today()
+                hr = inihari.strftime('%A')
+                bln = inihari.strftime('%m')
+                for i in range(len(day)):
+                    if hr == day[i]: hasil = hari[i]
+                for k in range(0, len(bulan)):
+                    if bln == str(k): blan = bulan[k-1]
+                rst = hasil + ", " + inihari.strftime('%d') + " - " + blan + " - " + inihari.strftime('%Y') + "\nJam : [ " + inihari.strftime('%H:%M:%S') + " ]"
+                cl.sendText(msg.to, rst)
+#---------------------------------------------------------
+#---------------------------------------------------------
+            elif msg.text in ["/kalender"]:
+	    	    wait2['setTime'][msg.to] = datetime.today().strftime('TANGGAL : %Y-%m-%d \nHARI : %A \nJAM : %H:%M:%S')
+	            cl.sendText(msg.to, "KALENDER\n\n" + (wait2['setTime'][msg.to]))
+#---------------------------------------------------------    
 #------------------------------ RESPON SPEED --------------------------------
             elif msg.text.lower() in ["respon"]:
                 start = time.time()
