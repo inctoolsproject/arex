@@ -82,6 +82,7 @@ helpMessage ="""Bot Command
 > Rutime
 > Pahala @
 > Dosa @
+> jodoh
 ========================
 ========================
     Status Group
@@ -3189,6 +3190,15 @@ def bot(op):
                 p = random.choice(rnd)
                 ki.sendText(msg.to,p)
                 print "[Command] Kerang Ajaib"
+
+            elif "jodoh " in msg.text.lower():
+                apk = msg.text.replace("jodoh ","")
+                rnd = ['Ya','Tidak']
+                jawab = ("10%","20%","30%","40%","50%","60%","70%","80%","90%","100%")
+                p = random.choice(rnd)
+                jawaban = random.choice(jawab)
+                ki.sendText(msg.to,"jawaban " + p + " Persen " + jawaban + " Lebih Romantis Lagi ")
+                print "[Command] Jodoh"
 
             elif "Rate" in msg.text:
                 tanya = msg.text.replace("Rate","")
