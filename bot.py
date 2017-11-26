@@ -31,6 +31,18 @@ kc = LINETCR.LINE()
 kc.login(token="En6vsH5b0qVPtS1Tl9g8.bfmfUwtccO+1N7EuVwD+Ma.Th6h1SUJHS0EE/rAC0cj9eenke1132oNqGcSBi11kfw=")
 kc.loginResult
 
+kd = LINETCR.LINE()
+kd.login(token="Eng8BkP6gKu8kN3gMcS8.O0Yaqg3s7GaGBPfcrZKzwa.PyIFrayFWPY9zkNq3xbJ6+qfa9gFsLw7j7af4HCjTls=")
+kd.loginResult
+
+ke = LINETCR.LINE()
+ke.login(token="EntCmiovSIoXzo5JAYp9.NMFA9ZNx1g/D9716NEzSgq.xv7cQ6NeImfPTCkLftHegdNam9kY4ft12mf7l8rWgp8=")
+ke.loginResult
+
+kf = LINETCR.LINE()
+kf.login(token="En7UI9bD9G4hEGMDrASd.0AMrOy/G0qfgaVIBEOm8Vq.jl9KN9s4msAG46cgWY4jTxvZhrnJrTp2tFcZrYzKHIQ=")
+kf.loginResult
+
 print "Login Suscess"
 reload(sys)
 sys.setdefaultencoding('utf-8')
@@ -102,12 +114,16 @@ helpMessage ="""Bot Command
 > Mimic:del: @
 > ListTarget"""
 
-KAC=[cl,ki,kk,kc]
-DEF=[ki,kk,kc]
+KAC=[cl,ki,kk,kc,kd,ke,kf]
+DEF=[ki,kk,kc,kd,ke,kf]
+WEC=[kk]
 mid = cl.getProfile().mid
 Amid = ki.getProfile().mid
 Bmid = kk.getProfile().mid
 Cmid = kc.getProfile().mid
+Dmid = kd.getProfile().mid
+Emid = ke.getProfile().mid
+Fmid = kf.getProfile().mid
 protectname = []
 protecturl = []
 protection = []
@@ -115,7 +131,7 @@ autocancel = {}
 autoinvite = []
 autoleaveroom = []
 targets = []
-Bots=[mid,Amid,Bmid,Cmid]
+Bots=[mid,Amid,Bmid,Cmid,Dmid,Emid,Fmid]
 admin = ["ube187443474747c3ec352e7efeb48c1b"]
 owner = ["ube187443474747c3ec352e7efeb48c1b"]
 wait = {
@@ -196,6 +212,23 @@ backup.displayName = contact.displayName
 backup.statusMessage = contact.statusMessage
 backup.pictureStatus = contact.pictureStatus
 
+contact = kd.getProfile()
+backup = kd.getProfile()
+backup.displayName = contact.displayName
+backup.statusMessage = contact.statusMessage
+backup.pictureStatus = contact.pictureStatus
+
+contact = ke.getProfile()
+backup = ke.getProfile()
+backup.displayName = contact.displayName
+backup.statusMessage = contact.statusMessage
+backup.pictureStatus = contact.pictureStatus
+
+contact = kf.getProfile()
+backup = kf.getProfile()
+backup.displayName = contact.displayName
+backup.statusMessage = contact.statusMessage
+backup.pictureStatus = contact.pictureStatus
 
 def upload_tempimage(client):
      '''
@@ -447,11 +480,11 @@ def bot(op):
                                         cl.sendMessage(c)
 
         if op.type == 17:
-                group = random.choice(DEF).getGroup(op.param1)
+                group = random.choice(WEC).getGroup(op.param1)
                 cb = Message()
                 cb.to = op.param1
-                cb.text = random.choice(DEF).getContact(op.param2).displayName + " [NewMemb]\n\nSelamat Datang" + random.choice(KAC).getContact(op.param2).displayName + " di [" + group.name + "]\nJGN NAKAL OK!!" + "\n\nCreator => " + group.creator.displayName
-                random.choice(DEF).sendMessage(cb)
+                cb.text = random.choice(WEC).getContact(op.param2).displayName + " [NewMemb]\n\nSelamat Datang" + random.choice(KAC).getContact(op.param2).displayName + " di [" + group.name + "]\nJGN NAKAL OK!!" + "\n\nCreator => " + group.creator.displayName
+                random.choice(WEC).sendMessage(cb)
         if op.type == 15:
             if op.param2 in Bots:
                 return
@@ -689,7 +722,7 @@ def bot(op):
             if not op.param2 in Bots:
                 if wait["protectionOn"] == True: 
                     try:
-                        klist=[ki,kk,kc]
+                        klist=[ki,kk,kc,kd,ke,kf]
                         kicker = random.choice(klist) 
                         G = kicker.getGroup(op.param1)
                         kicker.kickoutFromGroup(op.param1,[op.param2])
@@ -770,7 +803,7 @@ def bot(op):
             if not op.param2 in Bots:
               if wait["qr"] == True:  
                 try:
-                    klist=[ki,kk,kc]
+                    klist=[ki,kk,kc,kd,ke,kf]
                     kicker = random.choice(klist) 
                     G = kicker.getGroup(op.param1)
                     G.preventJoinByTicket = True
@@ -781,7 +814,7 @@ def bot(op):
             if not op.param2 in Bots:
               if wait["protectionOn"] == True:
                  try:                    
-                    klist=[ki,kk,kc]
+                    klist=[ki,kk,kc,kd,ke,kf]
                     kicker = random.choice(klist) 
                     G = kicker.getGroup(op.param1)
                     G.preventJoinByTicket = True
@@ -796,7 +829,7 @@ def bot(op):
             I = G.creator
             if not op.param2 in Bots:
                 if wait["protectionOn"] == True:  
-                    klist=[ki,kk,kc]
+                    klist=[ki,kk,kc,kd,ke,kf]
                     kicker = random.choice(klist)
                     G = kicker.getGroup(op.param1)
                     if G is not None:
@@ -807,6 +840,7 @@ def bot(op):
                     try:
                         gs = ki.getGroup(op.param1)
                         gs = kk.getGroup(op.param1)
+                        gs = kc.getGroup(op.param1)
                         targets = [op.param2]
                         for target in targets:
                            try:
@@ -827,7 +861,7 @@ def bot(op):
                 if not op.param2 in Bots:
                   if wait["protectionOn"] == True:  
                    try:
-                       klist=[ki,kk,kc]
+                       klist=[ki,kk,kc,kd,ke,kf]
                        kicker = random.choice(klist)
                        G = kicker.getGroup(op.param1)
                        G.preventJoinByTicket = False
@@ -2082,8 +2116,8 @@ def bot(op):
                 msg.contentType = 13
                 adm = 'ube187443474747c3ec352e7efeb48c1b'
                 msg.contentMetadata = {'mid': adm}
-                cl.sendMessage(msg)
-                cl.sendText(msg.to,"Instagram : @dekaprabowoo\nJodiak : Taurus\nHubungan : Sedang Menjalani")
+                kc.sendMessage(msg)
+                kc.sendText(msg.to,"Instagram : @dekaprabowoo\nJodiak : Taurus\nHubungan : Sedang Menjalani")
 #----------------------------------------------------------------------------
 #--------------------------------- GIFT -------------------------------------
             elif msg.text.lower() in ["gift"]:
@@ -2092,7 +2126,7 @@ def bot(op):
                                     'PRDTYPE': 'THEME',
                                     'MSGTPL': '5'}
                 msg.text = None
-                cl.sendMessage(msg)
+                kc.sendMessage(msg)
 #----------------------------------------------------------------------------
 #------------------------------ CANCEL PENDING ------------------------------
             elif msg.text.lower() in ["cancel"]:
@@ -2273,6 +2307,9 @@ def bot(op):
                         kk.updateProfile(profile)
                         ki.updateProfile(profile)
                         kc.updateProfile(profile)
+                        kd.updateProfile(profile)
+                        kf.updateProfile(profile)
+                        ke.updateProfile(profile)
                         cl.sendText(msg.to,"Done")
 #----------------------------------------------------------------------------
 #------------------------------ CHANGE BIO ----------------------------------
@@ -2285,6 +2322,9 @@ def bot(op):
                         kk.updateProfile(profile)
                         ki.updateProfile(profile)
                         kc.updateProfile(profile)
+                        kd.updateProfile(profile)
+                        kf.updateProfile(profile)
+                        ke.updateProfile(profile)
                         cl.sendText(msg.to,"Done")
 #----------------------------------------------------------------------------                    
             elif msg.text.lower() in ["contact on"]:
@@ -2669,6 +2709,12 @@ def bot(op):
                         time.sleep(0.2)
                         kc.acceptGroupInvitationByTicket(msg.to,Ticket)
                         time.sleep(0.2)
+                        kd.acceptGroupInvitationByTicket(msg.to,Ticket)
+                        time.sleep(0.2)
+                        ke.acceptGroupInvitationByTicket(msg.to,Ticket)
+                        time.sleep(0.2)
+                        kf.acceptGroupInvitationByTicket(msg.to,Ticket)
+                        time.sleep(0.2)
                         G = cl.getGroup(msg.to)
                         G.preventJoinByTicket = True
                         ki.updateGroup(G)
@@ -2686,6 +2732,9 @@ def bot(op):
                         ki.leaveGroup(msg.to)
                         kk.leaveGroup(msg.to)
                         kc.leaveGroup(msg.to)
+                        kd.leaveGroup(msg.to)
+                        ke.leaveGroup(msg.to)
+                        kf.leaveGroup(msg.to)
                     except:
                         pass
 #----------------------------------------------------------------------------
@@ -2931,7 +2980,7 @@ def bot(op):
 #------------------------------- CHECK SIDER --------------------------------
             if msg.text.lower() in ["/set"]:
                 if msg.toType == 2:
-                    cl.sendText(msg.to, "Ada Apaaa..")
+                    kc.sendText(msg.to, "Ada Apaaa..")
                     try:
                         del wait2['readPoint'][msg.to]
                         del wait2['readMember'][msg.to]
@@ -2953,7 +3002,7 @@ def bot(op):
                             for rom in wait2["ROM"][msg.to].items():
                                 print "[Command] Check"
                                 chiya += rom[1] + "\n"
-                        cl.sendText(msg.to, "✔ Read : %s\n\n✖ Sider :\n%s\nPoint creation date n time:\n[%s]"  % (wait2['readMember'][msg.to],chiya,setTime[msg.to]))
+                        kc.sendText(msg.to, "✔ Read : %s\n\n✖ Sider :\n%s\nPoint creation date n time:\n[%s]"  % (wait2['readMember'][msg.to],chiya,setTime[msg.to]))
                         try:
                             del wait2['readPoint'][msg.to]
                             del wait2['readMember'][msg.to]
@@ -3475,8 +3524,8 @@ def bot(op):
                     cl.sendText(msg.to,'Error.')
 
 #-----------------------------------------------
-            elif "/say-id: " in msg.text.lower():
-                    query = msg.text.lower().replace("/say-id: ","")
+            elif "/say " in msg.text.lower():
+                    query = msg.text.lower().replace("/say ","")
                     with requests.session() as s:
                         s.headers['user-agent'] = 'Mozilla/5.0'
                         url = 'https://google-translate-proxy.herokuapp.com/api/tts'
@@ -3505,9 +3554,7 @@ def bot(op):
                         mp3  = r.url
                         cl.sendAudioWithURL(msg.to, mp3)
 #----------------------------------------------------------------------------
-#---------------------------------------------------------------
-            elif "cek" in msg.text:
-            	cl.sendText(msg.to,"contoh : /cek 16-05-2004")
+
 #---------------------------------------------------------
             elif "/cek " in msg.text:
                 tanggal = msg.text.replace("/cek ","")
@@ -3521,14 +3568,17 @@ def bot(op):
                 cl.sendText(msg.to,"Tanggal Lahir : "+lahir+"\n\nUmur : "+usia+"\n\nUltah : "+ultah+"\n\nZodiak : "+zodiak)
 #--------------------------------- ABSEN ------------------------------------
             elif msg.text.lower() in ["absen"]:
-                ki.sendText(msg.to,"Siap Boy  􀜁􀅹Salute􏿿")
-                kk.sendText(msg.to,"Siap Boy 􀜁􀅹Salute􏿿")
-                kc.sendText(msg.to,"Siap Boy 􀜁􀅹Salute􏿿")
+                ki.sendText(msg.to,"Siap Boy 1  􀜁􀅹Salute􏿿")
+                kk.sendText(msg.to,"Siap Boy 2 􀜁􀅹Salute􏿿")
+                kc.sendText(msg.to,"Siap Boy 3 􀜁􀅹Salute􏿿")
+                kd.sendText(msg.to,"Siap Boy 4 􀜁􀅹Salute􏿿")
+                ke.sendText(msg.to,"Siap Boy 5 􀜁􀅹Salute􏿿")
+                kf.sendText(msg.to,"Siap Boy 6 􀜁􀅹Salute􏿿")
 #----------------------------------------------------------------------------
             elif msg.text in ["/quote"]:
                 quote = ['Barangsiapa yang suka meninggalkan barang di tempat umum maka ia akan kehilangan barangnya tersebut','Kunci KESUKSESAN itu cuma satu, yakni lu harus BERHASIL']
                 rio = random.choice(quote)
-                cl.sendText(msg.to,rio)
+                kc.sendText(msg.to,rio)
 #---------------------------------------------------------
 #---------------------------------------------------------
             elif msg.text in ["/time","/waktu"]:
@@ -3545,12 +3595,12 @@ def bot(op):
                 for k in range(0, len(bulan)):
                     if bln == str(k): blan = bulan[k-1]
                 rst = hasil + ", " + inihari.strftime('%d') + " - " + blan + " - " + inihari.strftime('%Y') + "\nJam : [ " + inihari.strftime('%H:%M:%S') + " ]"
-                cl.sendText(msg.to, rst)
+                kc.sendText(msg.to, rst)
 #---------------------------------------------------------
 #---------------------------------------------------------
             elif msg.text in ["/kalender"]:
 	    	    wait2['setTime'][msg.to] = datetime.today().strftime('TANGGAL : %Y-%m-%d \nHARI : %A \nJAM : %H:%M:%S')
-	            cl.sendText(msg.to, "KALENDER\n\n" + (wait2['setTime'][msg.to]))
+	            kc.sendText(msg.to, "KALENDER\n\n" + (wait2['setTime'][msg.to]))
 #---------------------------------------------------------    
 #------------------------------ RESPON SPEED --------------------------------
             elif msg.text.lower() in ["respon"]:
